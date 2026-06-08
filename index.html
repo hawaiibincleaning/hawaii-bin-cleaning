@@ -1,1264 +1,168 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Hawaii Bin Cleaning — Cleaner Bins. Cleaner Homes. Cleaner Hawaiʻi.</title>
-<meta name="description" content="Professional trash bin cleaning, sanitizing and deodorizing on O'ahu. Local. Family-owned. Join the launch list for your founding member discount.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Nunito:wght@400;600;700;800;900&family=Pacifico&display=swap" rel="stylesheet">
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --navy:#1B2A4A;--navy2:#2A3F6B;--navy3:#0D1A2E;
-  --green:#2E7D32;--gb:#4CAF50;--gl:#E8F5E9;
-  --teal:#0D7B8A;--tl:#E0F4F7;
-  --cream:#F5F0E8;--gold:#F5C518;--coral:#FF6B6B;--pink:#FF8FA3;
-  --white:#fff;--off:#FAFAF8;--gray:#6B7280;--gray-l:#F3F4F6;
-  --sh:0 4px 24px rgba(27,42,74,.1);--shl:0 12px 48px rgba(27,42,74,.18);
-  --r:12px;--rl:20px;
-}
-html{scroll-behavior:smooth}
-body{font-family:'Nunito',sans-serif;background:var(--white);color:var(--navy);overflow-x:hidden;line-height:1.6;-webkit-font-smoothing:antialiased}
-h1,h2,h3,h4{font-family:'Oswald',sans-serif;line-height:1.15;letter-spacing:-.3px}
-a{text-decoration:none;color:inherit}
-
-/* ============================
-   LOADER
-   ============================ */
-#loader{
-  position:fixed;inset:0;background:var(--navy);
-  display:flex;align-items:center;justify-content:center;flex-direction:column;
-  z-index:9999;transition:opacity .9s ease,visibility .9s ease;
-}
-#loader.out{opacity:0;visibility:hidden;pointer-events:none}
-.ld-stars{position:absolute;inset:0;overflow:hidden;pointer-events:none}
-.ld-star{position:absolute;background:white;border-radius:50%;opacity:0;animation:twinkle var(--d,3s) ease-in-out infinite var(--dl,0s)}
-@keyframes twinkle{0%,100%{opacity:0;transform:scale(.5)}50%{opacity:var(--op,.4);transform:scale(1)}}
-.ld-brand{font-family:'Oswald',sans-serif;font-weight:700;font-size:1.1rem;color:var(--white);letter-spacing:3px;margin-bottom:2.25rem;opacity:0;animation:riseIn .7s ease .2s forwards}
-.ld-brand span{color:var(--gb)}
-.ld-ring{position:relative;width:250px;height:250px;display:flex;align-items:center;justify-content:center}
-.ld-svg{position:absolute;top:0;left:0;transform:rotate(-90deg)}
-.ld-track{fill:none;stroke:rgba(255,255,255,.07);stroke-width:7}
-.ld-arc{fill:none;stroke:url(#ag);stroke-width:7;stroke-linecap:round;stroke-dasharray:690;stroke-dashoffset:690;transition:stroke-dashoffset .08s linear;filter:drop-shadow(0 0 6px rgba(76,175,80,.45))}
-.ld-dot{fill:var(--gb);filter:drop-shadow(0 0 5px var(--gb))}
-.ld-inner{width:200px;height:200px;border-radius:50%;background:rgba(10,24,50,.7);border:1px solid rgba(255,255,255,.06);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;position:relative;z-index:1}
-.ld-glow{position:absolute;width:100px;height:100px;border-radius:50%;background:rgba(76,175,80,.1);animation:glowP 2.2s ease-in-out infinite}
-@keyframes glowP{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:1;transform:scale(1.3)}}
-.ld-bin{animation:ldFloat 2.4s ease-in-out infinite}
-@keyframes ldFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
-.ld-lid{transform-origin:45px 30px;animation:ldLid 2.4s ease-in-out infinite}
-@keyframes ldLid{0%,100%{transform:rotate(0)}20%{transform:rotate(-4deg)}60%{transform:rotate(3deg)}}
-.ld-pct{font-family:'Oswald',sans-serif;font-size:2.1rem;font-weight:700;color:var(--white);line-height:1;letter-spacing:-1px}
-.ld-pct em{font-style:normal;font-size:1.2rem;color:var(--gb);font-weight:400}
-.ld-btm{display:flex;flex-direction:column;align-items:center;margin-top:2rem;opacity:0;animation:riseIn .7s ease .5s forwards}
-.ld-lbl{font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:3px;color:rgba(255,255,255,.3);margin-bottom:.625rem}
-.ld-msg{font-size:.875rem;color:rgba(255,255,255,.5);min-height:1.3rem;transition:opacity .25s;text-align:center}
-.ld-msg.h{opacity:0}
-.ld-dots{display:flex;gap:5px;align-items:center;margin-top:.75rem}
-.ld-dot-w{width:5px;height:5px;border-radius:50%;background:var(--gb);animation:wdot 1.3s ease-in-out infinite}
-.ld-dot-w:nth-child(2){animation-delay:.18s}.ld-dot-w:nth-child(3){animation-delay:.36s}
-@keyframes wdot{0%,100%{opacity:.25;transform:scale(.6)}50%{opacity:1;transform:scale(1.25)}}
-.ld-orbit{position:absolute;width:220px;height:220px;border-radius:50%;animation:orb 4s linear infinite;opacity:0;transition:opacity .5s}
-.ld-orbit.vis{opacity:1}
-@keyframes orb{from{transform:rotate(0)}to{transform:rotate(360deg)}}
-.ld-odrop{position:absolute;top:-4px;left:50%;transform:translateX(-50%);width:6px;height:9px;border-radius:50% 50% 50% 50%/60% 60% 40% 40%;background:var(--teal)}
-.ld-odrop2{top:auto;bottom:-4px;background:var(--gb);width:5px;height:7px}
-.ld-particle{position:absolute;border-radius:50%;pointer-events:none;animation:pburst .7s ease-out forwards}
-@keyframes pburst{0%{opacity:1;transform:scale(1) translate(0,0)}100%{opacity:0;transform:scale(.1) translate(var(--tx),var(--ty))}}
-@keyframes riseIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
-#ld-replay{display:none;margin-top:1.75rem;background:transparent;border:1.5px solid rgba(255,255,255,.18);color:rgba(255,255,255,.5);font-family:'Nunito',sans-serif;font-size:.8rem;font-weight:800;padding:.6rem 1.75rem;border-radius:50px;cursor:pointer;transition:all .25s;letter-spacing:.5px}
-#ld-replay:hover{border-color:var(--gb);color:var(--gb)}
-
-/* ============================
-   SITE WRAPPER
-   ============================ */
-#site{opacity:0;transition:opacity .8s ease}
-#site.visible{opacity:1}
-
-/* ============================
-   NAV
-   ============================ */
-#navbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--navy);box-shadow:0 2px 20px rgba(0,0,0,.25);transition:all .3s}
-.nav-in{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:.75rem 1.5rem;gap:1rem}
-.nav-logo{display:flex;align-items:center;gap:.65rem;cursor:pointer;flex-shrink:0}
-.nav-logo-ic{width:40px;height:40px;background:var(--gb);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.nav-logo-t{color:var(--white)}
-.nav-logo-t .brand{font-family:'Oswald',sans-serif;font-weight:700;font-size:1.05rem;letter-spacing:.5px;line-height:1.1}
-.nav-logo-t .tag{font-size:.6rem;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:1px}
-/* Nav links */
-.nav-links{display:flex;align-items:center;gap:.1rem}
-.nav-links>*{background:none;border:none;color:rgba(255,255,255,.8);font-family:'Nunito',sans-serif;font-size:.8125rem;font-weight:700;cursor:pointer;padding:.5rem .7rem;border-radius:8px;transition:all .2s;white-space:nowrap;line-height:1}
-.nav-links>*:hover{background:rgba(255,255,255,.1);color:var(--white)}
-.nav-cta{background:var(--gb)!important;color:var(--navy)!important;padding:.5rem 1rem!important;border-radius:8px!important;font-weight:800!important}
-.nav-cta:hover{background:#66BB6A!important;transform:translateY(-1px)}
-/* Dropdown */
-.nav-drop{position:relative}
-.nav-drop-btn{display:flex;align-items:center;gap:.3rem}
-.nav-drop-btn::after{content:'▾';font-size:.7rem;opacity:.7;transition:transform .2s}
-.nav-drop:hover .nav-drop-btn::after{transform:rotate(-180deg)}
-.nav-drop-menu{
-  position:absolute;top:calc(100% + 8px);left:0;
-  background:var(--navy3);border:1px solid rgba(255,255,255,.1);
-  border-radius:var(--r);padding:.5rem;min-width:210px;
-  display:none;z-index:200;box-shadow:0 16px 40px rgba(0,0,0,.4);
-}
-.nav-drop:hover .nav-drop-menu{display:block}
-.nav-drop-menu a,.nav-drop-menu button{
-  display:block;width:100%;text-align:left;padding:.625rem 1rem;
-  color:rgba(255,255,255,.75);font-family:'Nunito',sans-serif;font-size:.8125rem;font-weight:600;
-  background:none;border:none;cursor:pointer;border-radius:8px;transition:all .15s;
-  white-space:nowrap;
-}
-.nav-drop-menu a:hover,.nav-drop-menu button:hover{background:rgba(255,255,255,.08);color:var(--white)}
-.nav-drop-menu .divider{height:1px;background:rgba(255,255,255,.08);margin:.375rem .5rem}
-.nav-drop-menu .soon{opacity:.45;font-size:.75rem;cursor:default}
-.nav-drop-menu .soon:hover{background:none!important;color:rgba(255,255,255,.45)!important}
-/* Hamburger */
-.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:.5rem}
-.hamburger span{display:block;width:24px;height:2px;background:var(--white);border-radius:2px;transition:all .3s}
-.mob-menu{display:none;flex-direction:column;background:var(--navy2);padding:1rem 1.5rem 1.5rem;gap:.1rem}
-.mob-menu a,.mob-menu button,.mob-menu .mob-drop-btn{
-  background:none;border:none;color:rgba(255,255,255,.85);font-family:'Nunito',sans-serif;
-  font-size:.9375rem;font-weight:700;cursor:pointer;padding:.75rem 0;
-  border-bottom:1px solid rgba(255,255,255,.08);text-align:left;width:100%;transition:color .2s;
-}
-.mob-menu a:hover,.mob-menu button:hover{color:var(--gb)}
-.mob-sub{display:none;padding-left:1rem;padding-bottom:.5rem;flex-direction:column;gap:.1rem}
-.mob-sub.open{display:flex}
-.mob-sub a,.mob-sub button{font-size:.875rem;padding:.5rem 0;border-bottom-color:rgba(255,255,255,.04);color:rgba(255,255,255,.65)}
-
-/* ============================
-   PAGE SYSTEM
-   ============================ */
-.page{display:none;padding-top:66px;min-height:100vh}
-.page.active{display:block}
-
-/* ============================
-   COMMON
-   ============================ */
-.container{max-width:1200px;margin:0 auto;padding:0 1.5rem}
-.sec{padding:5rem 0}
-.sec-alt{background:var(--cream)}
-.sec-navy{background:var(--navy);color:var(--white)}
-.sec-green{background:var(--green);color:var(--white)}
-.sec-label{font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:2.5px;color:var(--gb);margin-bottom:.75rem;display:block}
-.sec-title{font-size:clamp(1.875rem,5vw,2.875rem);font-weight:700;margin-bottom:1rem}
-.sec-sub{font-size:.9375rem;color:var(--gray);max-width:580px;margin-bottom:2.75rem;line-height:1.75}
-.center{text-align:center}
-.center .sec-sub{margin-left:auto;margin-right:auto}
-.g2{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem}
-.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
-.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem}
-.card{background:var(--white);border-radius:var(--rl);box-shadow:var(--sh);padding:2rem;transition:transform .25s,box-shadow .25s;border:1px solid rgba(0,0,0,.04)}
-.card:hover{transform:translateY(-4px);box-shadow:var(--shl)}
-.btn{display:inline-flex;align-items:center;gap:.5rem;font-family:'Nunito',sans-serif;font-weight:800;font-size:.9375rem;padding:.875rem 1.75rem;border-radius:50px;border:none;cursor:pointer;transition:all .25s;line-height:1}
-.btn-primary{background:var(--gb);color:var(--navy)}
-.btn-primary:hover{background:#66BB6A;transform:translateY(-2px);box-shadow:0 6px 20px rgba(76,175,80,.4)}
-.btn-secondary{background:transparent;color:var(--navy);border:2px solid var(--navy)}
-.btn-secondary:hover{background:var(--navy);color:var(--white);transform:translateY(-2px)}
-.btn-white{background:var(--white);color:var(--navy)}
-.btn-white:hover{background:var(--cream);transform:translateY(-2px)}
-.btn-ow{background:transparent;color:var(--white);border:2px solid rgba(255,255,255,.55)}
-.btn-ow:hover{background:var(--white);color:var(--navy);transform:translateY(-2px)}
-.wave{display:block;width:100%;overflow:hidden;line-height:0}
-
-/* ============================
-   SCROLL ANIMATIONS
-   ============================ */
-.reveal{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
-.reveal.from-l{transform:translateX(-32px)}
-.reveal.from-r{transform:translateX(32px)}
-.reveal.in{opacity:1;transform:none!important}
-/* Stagger children */
-.stagger .reveal:nth-child(1){transition-delay:.05s}
-.stagger .reveal:nth-child(2){transition-delay:.15s}
-.stagger .reveal:nth-child(3){transition-delay:.25s}
-.stagger .reveal:nth-child(4){transition-delay:.35s}
-.stagger .reveal:nth-child(5){transition-delay:.45s}
-.stagger .reveal:nth-child(6){transition-delay:.5s}
-
-/* ============================
-   HERO
-   ============================ */
-.hero{background:var(--navy);position:relative;overflow:hidden;padding:5rem 0 4rem}
-.hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.025'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E") repeat}
-.hero-in{max-width:1200px;margin:0 auto;padding:0 1.5rem;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;position:relative;z-index:1}
-.hero-lbl{font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:2px;color:var(--gb);margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
-.hero-lbl::before{content:'';width:28px;height:2px;background:var(--gb);display:inline-block}
-.hero-h{font-size:clamp(2.5rem,6vw,4.25rem);font-weight:700;color:var(--white);margin-bottom:1.25rem;line-height:1.05}
-.hero-h span{color:var(--gb)}
-.hero-sub{font-size:1.0625rem;color:rgba(255,255,255,.72);max-width:480px;margin-bottom:2rem;line-height:1.75}
-.hero-badges{display:flex;gap:.75rem;flex-wrap:wrap;margin-bottom:2.5rem}
-.hero-badge{background:rgba(255,255,255,.08);color:rgba(255,255,255,.88);border:1px solid rgba(255,255,255,.13);border-radius:50px;font-size:.8rem;font-weight:700;padding:.375rem .875rem;display:flex;align-items:center;gap:.35rem}
-.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap}
-.hero-vis{position:relative;display:flex;align-items:flex-end;justify-content:center}
-.truck-wrap{width:100%;max-width:500px;animation:heroFloat 4s ease-in-out infinite}
-@keyframes heroFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
-
-/* ============================
-   HOW IT WORKS
-   ============================ */
-.step-card{text-align:center;padding:2rem 1.5rem}
-.step-num{width:52px;height:52px;border-radius:50%;background:var(--navy);color:var(--gb);font-family:'Oswald',sans-serif;font-weight:700;font-size:1.4rem;display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem}
-
-/* ============================
-   EQUIPMENT SECTION
-   ============================ */
-.equip-step{display:grid;grid-template-columns:80px 1fr;gap:1.5rem;align-items:start;padding:1.75rem;background:var(--white);border-radius:var(--rl);margin-bottom:1rem;box-shadow:var(--sh);border-left:4px solid var(--gb);transition:transform .25s,box-shadow .25s}
-.equip-step:hover{transform:translateX(4px);box-shadow:var(--shl)}
-.equip-icon{width:72px;height:72px;border-radius:var(--r);display:flex;align-items:center;justify-content:center;font-size:2rem;flex-shrink:0}
-.equip-title{font-family:'Oswald',sans-serif;font-size:1.25rem;font-weight:700;color:var(--navy);margin-bottom:.375rem}
-.equip-desc{font-size:.9375rem;color:var(--gray);line-height:1.75}
-.equip-tag{display:inline-block;background:var(--gl);color:var(--green);font-size:.7rem;font-weight:800;padding:.2rem .75rem;border-radius:20px;text-transform:uppercase;letter-spacing:.5px;margin-top:.625rem}
-
-/* ============================
-   STATS
-   ============================ */
-.stat-card{text-align:center;padding:2rem 1rem}
-.stat-num{font-family:'Oswald',sans-serif;font-size:3.25rem;font-weight:700;color:var(--gb);line-height:1;margin-bottom:.5rem}
-.stat-lbl{font-size:.875rem;color:rgba(255,255,255,.7);line-height:1.5}
-
-/* ============================
-   SERVICE AREAS GRID
-   ============================ */
-.area-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:.75rem;margin-top:2rem}
-.area-chip{background:var(--white);border:1px solid var(--gray-l);border-radius:8px;padding:.625rem 1rem;font-size:.875rem;font-weight:700;color:var(--navy);text-align:center;display:flex;align-items:center;justify-content:center;gap:.375rem;cursor:pointer;transition:all .2s}
-.area-chip:hover{border-color:var(--gb);color:var(--green);transform:translateY(-2px);box-shadow:var(--sh)}
-.area-chip .dot{width:8px;height:8px;border-radius:50%;background:var(--gb);flex-shrink:0}
-.area-chip.soon{opacity:.55;cursor:default}
-.area-chip.soon:hover{transform:none;box-shadow:none;border-color:var(--gray-l)}
-.area-chip.soon .dot{background:var(--gray)}
-
-/* ============================
-   BLOG
-   ============================ */
-.blog-card{border-radius:var(--rl);overflow:hidden;box-shadow:var(--sh);transition:transform .25s,box-shadow .25s;cursor:pointer;background:var(--white)}
-.blog-card:hover{transform:translateY(-4px);box-shadow:var(--shl)}
-.blog-thumb{height:170px;display:flex;align-items:center;justify-content:center;font-size:2.75rem;padding:1.5rem}
-.blog-body{padding:1.5rem}
-.blog-cat{font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;color:var(--teal);margin-bottom:.5rem}
-.blog-title{font-family:'Oswald',sans-serif;font-size:1.175rem;font-weight:600;margin-bottom:.5rem;color:var(--navy);line-height:1.3}
-.blog-exc{font-size:.875rem;color:var(--gray);line-height:1.6;margin-bottom:.875rem}
-.blog-meta{font-size:.8rem;color:var(--gray)}
-
-/* ============================
-   FAQ
-   ============================ */
-.faq-item{border-bottom:1px solid var(--gray-l);overflow:hidden}
-.faq-q{width:100%;background:none;border:none;cursor:pointer;display:flex;justify-content:space-between;align-items:flex-start;padding:1.25rem 0;font-family:'Nunito',sans-serif;font-size:1rem;font-weight:700;color:var(--navy);text-align:left;gap:1rem;transition:color .2s}
-.faq-q:hover{color:var(--green)}
-.faq-ch{flex-shrink:0;transition:transform .3s;color:var(--gb);font-size:1.25rem;line-height:1}
-.faq-a{font-size:.9375rem;color:var(--gray);line-height:1.75;padding-bottom:1.25rem;display:none}
-.faq-item.open .faq-ch{transform:rotate(-180deg)}
-.faq-item.open .faq-a{display:block}
-
-/* ============================
-   CTA SECTION
-   ============================ */
-.cta-sec{background:var(--green);padding:5rem 0;position:relative;overflow:hidden}
-.cta-sec::before{content:'';position:absolute;top:-40px;right:-40px;width:280px;height:280px;border-radius:50%;background:rgba(255,255,255,.06)}
-.cta-sec::after{content:'';position:absolute;bottom:-60px;left:-30px;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,.05)}
-.cta-in{position:relative;z-index:1;text-align:center;color:var(--white)}
-.cta-in h2{font-family:'Oswald',sans-serif;font-size:clamp(2rem,5vw,3rem);font-weight:700;margin-bottom:1rem}
-.cta-in p{font-size:1.0625rem;opacity:.85;max-width:520px;margin:0 auto 2rem;line-height:1.75}
-
-/* ============================
-   VALUE / ABOUT CARDS
-   ============================ */
-.value-card{padding:2rem;border-radius:var(--rl);background:var(--white);border-left:4px solid var(--gb);box-shadow:var(--sh)}
-.value-ic{font-size:1.875rem;margin-bottom:.875rem}
-
-/* ============================
-   AREA PAGE
-   ============================ */
-.area-info{display:flex;gap:.75rem;flex-wrap:wrap;margin:1.5rem 0}
-.area-info-chip{background:var(--white);border:1px solid var(--gray-l);border-radius:8px;padding:.5rem 1rem;font-size:.875rem;font-weight:700;color:var(--navy);display:flex;align-items:center;gap:.5rem;box-shadow:var(--sh)}
-
-/* ============================
-   LEGAL
-   ============================ */
-.legal{max-width:800px;margin:0 auto;padding:3rem 1.5rem}
-.legal h1{font-size:2.25rem;font-weight:700;margin-bottom:.75rem}
-.legal h2{font-size:1.4rem;font-weight:600;margin:2rem 0 .75rem;color:var(--navy)}
-.legal p{font-size:.9375rem;color:#374151;line-height:1.8;margin-bottom:1rem}
-.legal ul{list-style:disc;padding-left:1.5rem;margin-bottom:1rem}
-.legal ul li{font-size:.9375rem;color:#374151;line-height:1.8;margin-bottom:.375rem}
-.legal-date{font-size:.875rem;color:var(--gray);margin-bottom:2rem;padding-bottom:1.5rem;border-bottom:1px solid var(--gray-l)}
-
-/* ============================
-   FOOTER
-   ============================ */
-footer{background:var(--navy);color:rgba(255,255,255,.7);padding:4rem 0 2rem}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
-.footer-brand .fn{font-family:'Oswald',sans-serif;font-size:1.35rem;font-weight:700;color:var(--white);margin-bottom:.375rem}
-.footer-brand .fs{font-size:.875rem;color:rgba(255,255,255,.5);line-height:1.6;margin-bottom:.5rem}
-.footer-col h4{font-family:'Oswald',sans-serif;font-size:.8rem;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:rgba(255,255,255,.38);margin-bottom:1.25rem}
-.footer-col ul{list-style:none}
-.footer-col ul li{margin-bottom:.625rem}
-.footer-col ul li a,.footer-col ul li button{color:rgba(255,255,255,.65);font-size:.875rem;background:none;border:none;cursor:pointer;font-family:'Nunito',sans-serif;transition:color .2s;padding:0;text-align:left}
-.footer-col ul li a:hover,.footer-col ul li button:hover{color:var(--gb)}
-.footer-bot{border-top:1px solid rgba(255,255,255,.1);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:.8rem;color:rgba(255,255,255,.38)}
-.footer-bot a{color:rgba(255,255,255,.38);transition:color .2s}
-.footer-bot a:hover{color:var(--gb)}
-
-/* ============================
-   RESPONSIVE
-   ============================ */
-@media(max-width:1024px){
-  .g4{grid-template-columns:repeat(2,1fr)}
-  .footer-grid{grid-template-columns:1fr 1fr;gap:2rem}
-}
-@media(max-width:768px){
-  .nav-links{display:none}
-  .hamburger{display:flex}
-  .mob-menu.open{display:flex}
-  .hero-in{grid-template-columns:1fr;text-align:center;gap:2rem}
-  .hero-in .hero-ctas{justify-content:center}
-  .hero-in .hero-badges{justify-content:center}
-  .hero-vis{order:-1}
-  .g2,.g3{grid-template-columns:1fr}
-  .equip-step{grid-template-columns:60px 1fr}
-  .footer-grid{grid-template-columns:1fr}
-  .footer-bot{flex-direction:column;text-align:center}
-  .sec{padding:3.5rem 0}
-}
-@media(max-width:540px){
-  .hero-h{font-size:2.25rem}
-  .btn{font-size:.875rem;padding:.75rem 1.5rem}
-}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hawaii Bin Cleaning | Cleaner Bins. Happier Homes.</title>
+  <link rel="canonical" href="https://hawaiibincleaning.com">
+  <meta name="description" content="Hawaii Bin Cleaning provides professional truck-mounted trash bin cleaning for Oʻahu homes. Join the launch list for founder updates.">
+  
+  <meta property="og:site_name" content="Hawaii Bin Cleaning">
+  <meta property="og:title" content="Hawaii Bin Cleaning | Cleaner Bins. Happier Homes.">
+  <meta property="og:description" content="Hawaii Bin Cleaning provides professional truck-mounted trash bin cleaning for Oʻahu homes. Join the launch list for founder updates.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://hawaiibincleaning.com">
+  <meta property="og:image" content="https://hawaiibincleaning.com/assets/images/hbc-truck-transparent.png">
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script defer src="assets/js/site-config.js"></script>
+  <script defer src="assets/js/main.js"></script>
 </head>
-<body>
+<body data-page="home">
+  <a href="#main" class="skip-link">Skip to content</a>
+  <div id="site-header"></div>
+  <main id="main">
 
-<!-- ============================
-     LOADER
-     ============================ -->
-<div id="loader">
-  <div class="ld-stars" id="ldStars"></div>
-  <div class="ld-brand">HAWAII <span>BIN</span> CLEANING</div>
-  <div class="ld-ring" id="ldRing">
-    <div class="ld-orbit" id="ldOrbit">
-      <div class="ld-odrop"></div>
-      <div class="ld-odrop ld-odrop2" style="left:calc(50% + 90px);top:50%;transform:translateY(-50%)"></div>
-    </div>
-    <svg class="ld-svg" width="250" height="250" viewBox="0 0 250 250">
-      <defs>
-        <linearGradient id="ag" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="#0D7B8A"/>
-          <stop offset="100%" stop-color="#4CAF50"/>
-        </linearGradient>
-      </defs>
-      <circle class="ld-track" cx="125" cy="125" r="110"/>
-      <circle class="ld-arc" id="ldArc" cx="125" cy="125" r="110"/>
-      <circle class="ld-dot" id="ldDot" cx="125" cy="15" r="5"/>
-    </svg>
-    <div class="ld-inner" style="background:white;justify-content:space-between;padding:6px 0 12px;overflow:hidden">
-      <div class="ld-glow" style="background:rgba(76,175,80,.07)"></div>
-      <div style="width:190px;height:112px;overflow:hidden;flex-shrink:0;animation:ldFloat 2.4s ease-in-out infinite;position:relative;z-index:1;margin-top:2px">
-        <img src="mascot.png" style="width:190px;display:block;margin-top:-4px" alt="Hawaii Bin Cleaning mascot">
-      </div>
-      <div class="ld-pct" id="ldPct" style="color:#1B2A4A;position:relative;z-index:1">0<em style="color:#2E7D32">%</em></div>
-    </div>
-  </div>
-  <div class="ld-btm">
-    <div class="ld-lbl">Cleaning in progress</div>
-    <div class="ld-msg" id="ldMsg">Starting up...</div>
-    <div class="ld-dots"><div class="ld-dot-w"></div><div class="ld-dot-w"></div><div class="ld-dot-w"></div></div>
-  </div>
-  <button id="ld-replay" onclick="ldRestart()">↺ &nbsp;Replay</button>
-</div>
-
-<!-- ============================
-     SITE
-     ============================ -->
-<div id="site">
-
-<!-- NAVBAR -->
-<nav id="navbar">
-  <div class="nav-in">
-    <div class="nav-logo" onclick="nav('home')">
-      <div class="nav-logo-ic">
-        <svg viewBox="0 0 32 32" width="22" height="22" fill="none" stroke="#1B2A4A" stroke-width="2.5">
-          <path d="M6 24 Q8 18 16 18 Q24 18 26 24" stroke-linecap="round"/>
-          <rect x="8" y="12" width="16" height="12" rx="2"/>
-          <path d="M12 12V10Q12 6 16 6Q20 6 20 10V12"/>
-          <circle cx="11" cy="27" r="2.5" fill="#1B2A4A" stroke="none"/>
-          <circle cx="21" cy="27" r="2.5" fill="#1B2A4A" stroke="none"/>
-        </svg>
-      </div>
-      <div class="nav-logo-t">
-        <div class="brand">HAWAII BIN CLEANING</div>
-        <div class="tag">Cleaner Bins. Cleaner Homes.</div>
-      </div>
-    </div>
-    <div class="nav-links">
-      <button onclick="nav('home')">Home</button>
-      <button onclick="nav('about')">About</button>
-      <button onclick="nav('services')">Services</button>
-      <!-- Service Areas dropdown -->
-      <div class="nav-drop">
-        <button class="nav-drop-btn">Service Areas</button>
-        <div class="nav-drop-menu">
-          <button onclick="nav('area-pearl-city')">Pearl City</button>
-          <button onclick="nav('area-mililani')">Mililani</button>
-          <button onclick="nav('area-aiea')">Aiea</button>
-          <button onclick="nav('area-waipio')">Waipio / Waipio Gentry</button>
-          <button onclick="nav('area-hoopili')">Hoopili</button>
-          <button onclick="nav('area-ewa-beach')">Ewa Beach</button>
-          <button onclick="nav('area-ewa-gentry')">Ewa by Gentry</button>
-          <button onclick="nav('area-kapolei')">Kapolei</button>
-          <button onclick="nav('area-makakilo')">Makakilo</button>
-          <button onclick="nav('area-waipahu')">Waipahu</button>
-          <button onclick="nav('area-halawa')">Halawa</button>
-          <div class="divider"></div>
-          <span class="soon">Kailua — Coming Q2 2026</span>
-          <span class="soon">Kaneohe — Coming Q2 2026</span>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-card">
+          <div class="hero-badge">Launch list <span>now open</span></div>
+          <h1>Cleaner Bins. <span class="script-line">Happier Homes.</span></h1>
+          <p class="lede">Professional truck-mounted trash bin cleaning for Oʻahu homes. We clean, sanitize, deodorize, and help keep dirty wastewater out of your driveway.</p>
+          <div class="btn-row mt-24">
+            <a class="btn btn-primary" data-platform-link="book" href="/founders-discount">Join the Launch List</a>
+            <a class="btn btn-secondary" href="/services">See How It Works</a>
+          </div>
+          <div class="badge-list">
+            <span class="badge">🌊 Truck-mounted cleaning</span>
+            <span class="badge">🌿 Eco-minded process</span>
+            <span class="badge">🏠 Built for Hawaiʻi homes</span>
+          </div>
+        </div>
+        <div class="hero-visual" aria-label="Hawaii Bin Cleaning service truck illustration">
+          <div class="truck-frame">
+            <picture>
+              <source srcset="assets/images/hbc-truck-transparent.webp" type="image/webp">
+              <img src="assets/images/hbc-truck-transparent.png" alt="Cartoon Hawaii Bin Cleaning truck with two hydraulic bin lifters and ocean wave graphics">
+            </picture>
+          </div>
+          <div class="float-card">
+            <strong>Two-lifter service unit</strong>
+            <p>Designed to lift, wash, rinse, and deodorize bins curbside with a professional truck system.</p>
+          </div>
         </div>
       </div>
-      <!-- Resources dropdown -->
-      <div class="nav-drop">
-        <button class="nav-drop-btn">Resources</button>
-        <div class="nav-drop-menu">
-          <button onclick="nav('blog')">Blog</button>
-          <button onclick="nav('faq')">FAQ</button>
-        </div>
+    </section>
+
+    <section class="section feature-strip">
+      <div class="container text-center max-narrow">
+        <span class="eyebrow">What we do</span>
+        <h2>Healthier Bins. <span class="green-highlight">Cleaner Hawaiʻi.</span></h2>
+        <p class="lede">A simple recurring service for trash, recycling, and green waste bins that are too dirty, smelly, or inconvenient to clean yourself.</p>
       </div>
-      <button class="nav-cta" onclick="window.open('https://hawaiibincleaning.com/founding-member','_blank')">🌺 Join the Launch List</button>
-    </div>
-    <button class="hamburger" id="hmbgr" onclick="toggleMob()" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-  <!-- Mobile menu -->
-  <div class="mob-menu" id="mobMenu">
-    <a onclick="nav('home');closeMob()">🏠 Home</a>
-    <a onclick="nav('about');closeMob()">🌺 About</a>
-    <a onclick="nav('services');closeMob()">🚿 Services</a>
-    <button class="mob-drop-btn" onclick="toggleMobSub('mobAreas')">📍 Service Areas ▾</button>
-    <div class="mob-sub" id="mobAreas">
-      <button onclick="nav('area-pearl-city');closeMob()">Pearl City</button>
-      <button onclick="nav('area-mililani');closeMob()">Mililani</button>
-      <button onclick="nav('area-aiea');closeMob()">Aiea</button>
-      <button onclick="nav('area-waipio');closeMob()">Waipio / Waipio Gentry</button>
-      <button onclick="nav('area-hoopili');closeMob()">Hoopili</button>
-      <button onclick="nav('area-ewa-beach');closeMob()">Ewa Beach</button>
-      <button onclick="nav('area-ewa-gentry');closeMob()">Ewa by Gentry</button>
-      <button onclick="nav('area-kapolei');closeMob()">Kapolei</button>
-      <button onclick="nav('area-makakilo');closeMob()">Makakilo</button>
-      <button onclick="nav('area-waipahu');closeMob()">Waipahu</button>
-      <button onclick="nav('area-halawa');closeMob()">Halawa</button>
-    </div>
-    <button class="mob-drop-btn" onclick="toggleMobSub('mobRes')">📚 Resources ▾</button>
-    <div class="mob-sub" id="mobRes">
-      <button onclick="nav('blog');closeMob()">Blog</button>
-      <button onclick="nav('faq');closeMob()">FAQ</button>
-    </div>
-    <button onclick="window.open('https://hawaiibincleaning.com/founding-member','_blank');closeMob()">🌟 Join the Launch List</button>
-  </div>
-</nav>
-
-<!-- ==================== HOME ==================== -->
-<div id="page-home" class="page active">
-
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-in">
-      <div>
-        <div class="hero-lbl reveal">O'ahu's First Dedicated Bin Cleaning Service</div>
-        <h1 class="hero-h reveal">Cleaner Bins.<br><span>Cleaner Homes.</span><br>Cleaner Hawaiʻi.</h1>
-        <p class="hero-sub reveal">Professional trash bin cleaning, sanitizing &amp; deodorizing — right at your curb. Local. Family-owned. Committed to our community.</p>
-        <div class="hero-badges reveal">
-          <div class="hero-badge">🌿 Eco-Friendly</div>
-          <div class="hero-badge">👨‍👩‍👧 Family-Owned</div>
-          <div class="hero-badge">✅ Fully Insured</div>
-          <div class="hero-badge">🔁 All Bin Types</div>
-        </div>
-        <div class="hero-ctas reveal">
-          <button class="btn btn-primary" onclick="window.open('https://hawaiibincleaning.com/founding-member','_blank')">🌟 Join the Launch List</button>
-          <button class="btn btn-ow" onclick="nav('services')">See How It Works</button>
-        </div>
+      <div class="container grid grid-4 mt-36">
+        <article class="card">
+          <div class="icon-bubble blue">✨</div>
+          <h3>Deep Cleans & Sanitizes</h3>
+          <p>Removes grime, buildup, and unpleasant odors from the bins you touch every week.</p>
+        </article>
+        <article class="card">
+          <div class="icon-bubble green">🌿</div>
+          <h3>Eco-Friendly Process</h3>
+          <p>Designed around responsible cleaning, controlled runoff, and island-conscious operations.</p>
+        </article>
+        <article class="card">
+          <div class="icon-bubble orange">🦟</div>
+          <h3>Helps Deter Pests</h3>
+          <p>Cleaner bins are less attractive to flies, maggots, roaches, rodents, and other unwanted visitors.</p>
+        </article>
+        <article class="card">
+          <div class="icon-bubble blue">📅</div>
+          <h3>Convenient & Reliable</h3>
+          <p>Leave empty bins out after pickup and let us handle the dirty work curbside.</p>
+        </article>
       </div>
-      <div class="hero-vis reveal">
-        <div class="truck-wrap" style="max-width:400px;margin:0 auto">
-          <!-- Mascot character - clip removes the text banner at bottom -->
-          <img src="mascot.png"
-            style="width:100%;display:block;clip-path:inset(0 0 38% 0);border-radius:20px 20px 0 0;filter:drop-shadow(0 20px 40px rgba(0,0,0,.35))"
-            alt="Hui — Hawaii Bin Cleaning mascot">
-          <!-- Fake SVG placeholder to keep layout — hidden -->
-          <svg viewBox="0 0 520 1" xmlns="http://www.w3.org/2000/svg" style="display:none">
-            <defs><clipPath id="hc"><rect width="520" height="300" rx="18"/></clipPath></defs>
-            <rect width="520" height="300" rx="18" fill="#87CEEB" clip-path="url(#hc)"/>
-            <polygon points="0,210 60,135 120,195 180,115 260,195 330,125 400,185 460,105 520,175 520,300 0,300" fill="#2E7D32" opacity=".5"/>
-            <polygon points="0,230 80,165 150,225 220,155 300,225 380,160 450,215 520,175 520,300 0,300" fill="#1B5E20" opacity=".65"/>
-            <!-- Palm L -->
-            <rect x="32" y="175" width="9" height="90" rx="4.5" fill="#4E342E"/>
-            <ellipse cx="37" cy="170" rx="26" ry="18" fill="#388E3C" transform="rotate(-15 37 170)"/>
-            <ellipse cx="37" cy="170" rx="20" ry="14" fill="#4CAF50" transform="rotate(10 37 170)"/>
-            <!-- Palm R -->
-            <rect x="466" y="190" width="8" height="75" rx="4" fill="#4E342E"/>
-            <ellipse cx="470" cy="185" rx="22" ry="16" fill="#388E3C" transform="rotate(12 470 185)"/>
-            <!-- Truck body -->
-            <rect x="74" y="155" width="200" height="110" rx="12" fill="#1B2A4A" stroke="#0D1A2E" stroke-width="2"/>
-            <!-- Water tank highlight -->
-            <rect x="74" y="178" width="200" height="26" fill="#2E7D32"/>
-            <!-- DUAL GRABBER ARM -->
-            <rect x="130" y="130" width="8" height="30" rx="4" fill="#546E7A"/>
-            <rect x="155" y="130" width="8" height="30" rx="4" fill="#546E7A"/>
-            <rect x="120" y="125" width="52" height="10" rx="5" fill="#37474F"/>
-            <!-- Grabber claws -->
-            <path d="M128 158 Q122 165 120 172" fill="none" stroke="#546E7A" stroke-width="3" stroke-linecap="round"/>
-            <path d="M134 158 Q134 166 130 172" fill="none" stroke="#546E7A" stroke-width="3" stroke-linecap="round"/>
-            <path d="M159 158 Q159 166 155 172" fill="none" stroke="#546E7A" stroke-width="3" stroke-linecap="round"/>
-            <path d="M165 158 Q170 165 168 172" fill="none" stroke="#546E7A" stroke-width="3" stroke-linecap="round"/>
-            <!-- Company name on truck -->
-            <text x="174" y="198" text-anchor="middle" font-family="Oswald,sans-serif" font-weight="700" fill="white" font-size="11" letter-spacing=".5">HAWAII BIN CLEANING</text>
-            <!-- Logo on truck -->
-            <circle cx="174" cy="218" r="10" fill="rgba(255,255,255,.15)"/>
-            <text x="174" y="221" text-anchor="middle" font-size="12" fill="white">🍃</text>
-            <!-- Hose reel -->
-            <circle cx="248" cy="192" r="20" fill="#263238" stroke="#1B2A4A" stroke-width="2"/>
-            <circle cx="248" cy="192" r="12" fill="#37474F"/>
-            <circle cx="248" cy="192" r="5" fill="#546E7A"/>
-            <!-- Hose -->
-            <path d="M258 200 Q290 220 315 230" fill="none" stroke="#37474F" stroke-width="5" stroke-linecap="round"/>
-            <!-- CAB -->
-            <rect x="274" y="143" width="148" height="125" rx="12" fill="#1B2A4A" stroke="#0D1A2E" stroke-width="2"/>
-            <rect x="284" y="153" width="96" height="65" rx="9" fill="#B3E5FC"/>
-            <rect x="284" y="153" width="96" height="18" rx="9" fill="rgba(0,0,0,.15)"/>
-            <!-- Door panels -->
-            <rect x="284" y="232" width="44" height="28" rx="5" fill="#152238"/>
-            <rect x="332" y="232" width="44" height="28" rx="5" fill="#152238"/>
-            <!-- Front -->
-            <rect x="393" y="232" width="35" height="30" rx="4" fill="#263238"/>
-            <rect x="396" y="247" width="28" height="8" rx="3" fill="#90A4AE"/>
-            <rect x="398" y="235" width="22" height="10" rx="3" fill="#FFF176"/>
-            <!-- Driver character -->
-            <circle cx="318" cy="182" r="16" fill="#D4956A"/>
-            <path d="M302 176 Q302 161 318 159 Q334 161 334 176" fill="#2C1810"/>
-            <path d="M300 172 Q300 160 318 158 Q336 160 336 172 Q336 176 318 176 Q300 176 300 172Z" fill="#1B2A4A"/>
-            <text x="318" y="172" text-anchor="middle" font-size="8" fill="#4CAF50">HBC</text>
-            <ellipse cx="310" cy="182" rx="4" ry="4.5" fill="white"/><ellipse cx="326" cy="182" rx="4" ry="4.5" fill="white"/>
-            <circle cx="311" cy="183" r="2.5" fill="#3E2723"/><circle cx="327" cy="183" r="2.5" fill="#3E2723"/>
-            <path d="M311 190 Q318 196 325 190" fill="none" stroke="#3E2723" stroke-width="2" stroke-linecap="round"/>
-            <rect x="308" y="196" width="20" height="12" rx="3" fill="#1B2A4A"/>
-            <!-- Worker outside -->
-            <rect x="340" y="232" width="28" height="36" rx="7" fill="#1B2A4A"/>
-            <ellipse cx="328" cy="240" rx="12" ry="8" fill="#1B2A4A" transform="rotate(-18 328 240)"/>
-            <ellipse cx="362" cy="238" rx="12" ry="8" fill="#1B2A4A" transform="rotate(18 362 238)"/>
-            <ellipse cx="318" cy="254" rx="7" ry="7" fill="#4CAF50"/><ellipse cx="370" cy="250" rx="7" ry="7" fill="#4CAF50"/>
-            <rect x="342" y="266" width="9" height="22" rx="3.5" fill="#263238"/>
-            <rect x="353" y="266" width="9" height="22" rx="3.5" fill="#263238"/>
-            <rect x="339" y="284" width="13" height="7" rx="3.5" fill="#1A1A1A"/>
-            <rect x="350" y="284" width="13" height="7" rx="3.5" fill="#1A1A1A"/>
-            <!-- Head worker 2 -->
-            <circle cx="354" cy="220" r="16" fill="#A0714F"/>
-            <path d="M338 214 Q338 199 354 197 Q370 199 370 214" fill="#1A1209"/>
-            <path d="M336 210 Q336 198 354 196 Q372 198 372 210 Q372 215 354 215 Q336 215 336 210Z" fill="#2E7D32"/>
-            <rect x="333" y="209" width="44" height="6" rx="3" fill="#2E7D32"/>
-            <rect x="341" y="213" rx="4" ry="3" width="12" height="6" fill="#0D0D0D"/>
-            <rect x="356" y="213" rx="4" ry="3" width="12" height="6" fill="#0D0D0D"/>
-            <line x1="353" y1="215" x2="356" y2="215" stroke="#333" stroke-width="1.5"/>
-            <path d="M344 226 Q354 232 364 226" fill="none" stroke="#3E2723" stroke-width="2" stroke-linecap="round"/>
-            <!-- Hose in hand + water spray -->
-            <rect x="363" y="243" width="22" height="5" rx="2.5" fill="#37474F" transform="rotate(-28 363 243)"/>
-            <line x1="377" y1="234" x2="405" y2="216" stroke="#29B6F6" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="4,3" opacity=".8"/>
-            <line x1="379" y1="238" x2="410" y2="224" stroke="#29B6F6" stroke-width="2" stroke-linecap="round" stroke-dasharray="3,3" opacity=".55"/>
-            <!-- Bin being cleaned -->
-            <rect x="408" y="240" width="38" height="46" rx="7" fill="#78909C" stroke="#546E7A" stroke-width="2"/>
-            <rect x="406" y="234" width="42" height="10" rx="5" fill="#90A4AE"/>
-            <circle cx="419" cy="260" r="3" fill="#29B6F6" opacity=".7"/>
-            <circle cx="431" cy="272" r="2.5" fill="#29B6F6" opacity=".6"/>
-            <circle cx="443" cy="254" r="2" fill="#29B6F6" opacity=".8"/>
-            <!-- Wheels -->
-            <circle cx="116" cy="273" r="28" fill="#212121" stroke="#1B2A4A" stroke-width="3"/><circle cx="116" cy="273" r="16" fill="#424242"/><circle cx="116" cy="273" r="7" fill="#616161"/>
-            <circle cx="352" cy="273" r="28" fill="#212121" stroke="#1B2A4A" stroke-width="3"/><circle cx="352" cy="273" r="16" fill="#424242"/><circle cx="352" cy="273" r="7" fill="#616161"/>
-            <circle cx="430" cy="273" r="22" fill="#212121" stroke="#1B2A4A" stroke-width="2"/><circle cx="430" cy="273" r="13" fill="#424242"/>
-            <!-- Ground shadow -->
-            <ellipse cx="260" cy="298" rx="210" ry="6" fill="rgba(0,0,0,.2)"/>
-            <!-- Branding strip -->
-            <rect x="92" y="248" width="160" height="16" rx="3.5" fill="#4CAF50"/>
-            <text x="172" y="259" text-anchor="middle" font-family="Oswald,sans-serif" font-weight="600" fill="#1B2A4A" font-size="8" letter-spacing=".5">LOCAL · ECO-FRIENDLY · FAMILY-OWNED</text>
-            <!-- Thumbs up -->
-            <text x="314" y="262" font-size="16" transform="rotate(-18 314 262)">👍</text>
-          </svg>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <div class="wave" style="background:var(--navy)"><svg viewBox="0 0 1440 50" preserveAspectRatio="none" height="50" width="100%"><path d="M0,30 C240,60 480,0 720,30 C960,60 1200,0 1440,30 L1440,50 L0,50Z" fill="#F5F0E8"/></svg></div>
-
-  <!-- HOW IT WORKS -->
-  <section class="sec sec-alt">
-    <div class="container">
-      <div class="center">
-        <span class="sec-label reveal">Simple Process</span>
-        <h2 class="sec-title reveal">How It Works</h2>
-        <p class="sec-sub reveal">Schedule once. We handle everything — every month or quarter, rain or shine.</p>
-      </div>
-      <div class="g3 stagger">
-        <div class="step-card card reveal">
-          <div class="step-num">1</div>
-          <h3 style="font-family:'Oswald',sans-serif;font-size:1.2rem;font-weight:600;margin-bottom:.5rem">Schedule Online</h3>
-          <p style="font-size:.9rem;color:var(--gray);line-height:1.6">Pick your plan and service area. Takes under 2 minutes. No contracts.</p>
-        </div>
-        <div class="step-card card reveal">
-          <div class="step-num">2</div>
-          <h3 style="font-family:'Oswald',sans-serif;font-size:1.2rem;font-weight:600;margin-bottom:.5rem">We Come to Your Curb</h3>
-          <p style="font-size:.9rem;color:var(--gray);line-height:1.6">After the city truck empties your bins, our crew arrives and deep cleans both at once using our dual bin grabber system.</p>
-        </div>
-        <div class="step-card card reveal">
-          <div class="step-num">3</div>
-          <h3 style="font-family:'Oswald',sans-serif;font-size:1.2rem;font-weight:600;margin-bottom:.5rem">Fresh Bins. Every Time.</h3>
-          <p style="font-size:.9rem;color:var(--gray);line-height:1.6">Sanitized, deodorized, and sparkling clean. All greywater captured — nothing hits the ground or storm drains.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="wave" style="background:var(--cream)"><svg viewBox="0 0 1440 50" preserveAspectRatio="none" height="50" width="100%"><path d="M0,20 C360,55 1080,0 1440,35 L1440,50 L0,50Z" fill="#fff"/></svg></div>
-
-  <!-- EQUIPMENT TEASER -->
-  <section class="sec">
-    <div class="container">
-      <div class="g2" style="align-items:center;gap:4rem">
+    <section class="section">
+      <div class="container split">
         <div>
-          <span class="sec-label reveal">Our Equipment</span>
-          <h2 class="sec-title reveal">Built Different.<br>Cleans Better.</h2>
-          <p style="font-size:.9375rem;color:var(--gray);line-height:1.8;margin-bottom:1.5rem" class="reveal">Most bin cleaning services use basic pressure washers. We operate a purpose-built mobile cleaning unit with a <strong>hydraulic dual bin grabber</strong> that cleans two bins simultaneously, <strong>160°F rotating spray nozzles</strong>, and a <strong>sealed 300-gallon greywater capture tank</strong> — so not a single drop of dirty water touches the ground or O'ahu's storm drains.</p>
-          <button class="btn btn-primary reveal" onclick="nav('services')">See the Full Equipment Breakdown →</button>
-        </div>
-        <div class="reveal from-r">
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
-            <div style="background:var(--gl);border-radius:var(--r);padding:1.25rem;text-align:center"><div style="font-size:2rem;margin-bottom:.5rem">🦾</div><div style="font-family:'Oswald',sans-serif;font-weight:700;font-size:.95rem;color:var(--navy);margin-bottom:.25rem">Dual Bin Grabber</div><div style="font-size:.8rem;color:var(--gray)">Cleans 2 bins at once</div></div>
-            <div style="background:#E3F2FD;border-radius:var(--r);padding:1.25rem;text-align:center"><div style="font-size:2rem;margin-bottom:.5rem">🌡️</div><div style="font-family:'Oswald',sans-serif;font-weight:700;font-size:.95rem;color:var(--navy);margin-bottom:.25rem">160°F Hot Water</div><div style="font-size:.8rem;color:var(--gray)">Kills bacteria on contact</div></div>
-            <div style="background:#FFF8E1;border-radius:var(--r);padding:1.25rem;text-align:center"><div style="font-size:2rem;margin-bottom:.5rem">🔄</div><div style="font-family:'Oswald',sans-serif;font-weight:700;font-size:.95rem;color:var(--navy);margin-bottom:.25rem">360° Nozzles</div><div style="font-size:.8rem;color:var(--gray)">Every corner reached</div></div>
-            <div style="background:#E0F4F7;border-radius:var(--r);padding:1.25rem;text-align:center"><div style="font-size:2rem;margin-bottom:.5rem">🌊</div><div style="font-family:'Oswald',sans-serif;font-weight:700;font-size:.95rem;color:var(--navy);margin-bottom:.25rem">Greywater Capture</div><div style="font-size:.8rem;color:var(--gray)">Zero discharge — ever</div></div>
+          <span class="eyebrow">How it works</span>
+          <h2>From curbside to clean in three easy steps.</h2>
+          <p class="lede">Our goal is to make bin cleaning feel as normal and reliable as trash pickup.</p>
+          <ul class="list-check">
+            <li>Choose a recurring service option once launch scheduling opens.</li>
+            <li>Leave empty bins curbside on your service day after pickup.</li>
+            <li>Enjoy cleaner, fresher bins without dragging a hose through the driveway.</li>
+          </ul>
+          <div class="btn-row mt-24">
+            <a class="btn btn-primary" data-platform-link="book" href="/founders-discount">Reserve Founder Updates</a>
+            <a class="btn btn-ghost" href="/faq">Read FAQ</a>
           </div>
         </div>
+        <div class="grid process-grid">
+          <article class="card process-step">
+            <h3>Schedule</h3>
+            <p>Join the launch list now. When routes open, customers can book and manage service through the customer platform.</p>
+          </article>
+          <article class="card process-step">
+            <h3>Clean</h3>
+            <p>The truck-mounted unit lifts bins, washes the inside, and keeps the process contained and efficient.</p>
+          </article>
+          <article class="card process-step">
+            <h3>Deodorize</h3>
+            <p>Bins are deodorized after cleaning so your trash area smells fresher between pickups.</p>
+          </article>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- WHY IT MATTERS -->
-  <section class="sec sec-navy">
-    <div class="container">
-      <div class="center" style="margin-bottom:3rem">
-        <span class="sec-label reveal">Why It Matters</span>
-        <h2 class="sec-title reveal" style="color:white">Your Bins Are Dirtier Than You Think</h2>
-        <p class="reveal" style="color:rgba(255,255,255,.68);max-width:560px;margin:0 auto;font-size:1.0625rem;line-height:1.75">Unwashed bins breed bacteria, attract pests, and threaten your family's health. Hawaii's tropical climate makes it worse.</p>
-      </div>
-      <div class="g4 stagger">
-        <div class="stat-card reveal"><div class="stat-num">411M+</div><div class="stat-lbl">Bacteria per liter inside an average unwashed bin</div></div>
-        <div class="stat-card reveal"><div class="stat-num">90%</div><div class="stat-lbl">Of households have never professionally cleaned their bins</div></div>
-        <div class="stat-card reveal"><div class="stat-num">3–5</div><div class="stat-lbl">Pest species attracted by dirty bins in Hawaii's climate</div></div>
-        <div class="stat-card reveal"><div class="stat-num">E. coli</div><div class="stat-lbl">Salmonella &amp; listeria commonly found in unwashed bins</div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SERVICE AREAS OVERVIEW -->
-  <section class="sec sec-alt">
-    <div class="container">
-      <div class="center">
-        <span class="sec-label reveal">Where We Serve</span>
-        <h2 class="sec-title reveal">O'ahu Service Areas</h2>
-        <p class="sec-sub reveal">Launching neighborhood by neighborhood — starting with West &amp; Central O'ahu.</p>
-      </div>
-      <div class="area-grid reveal">
-        <div class="area-chip" onclick="nav('area-pearl-city')"><div class="dot"></div>Pearl City</div>
-        <div class="area-chip" onclick="nav('area-mililani')"><div class="dot"></div>Mililani</div>
-        <div class="area-chip" onclick="nav('area-aiea')"><div class="dot"></div>Aiea</div>
-        <div class="area-chip" onclick="nav('area-waipio')"><div class="dot"></div>Waipio</div>
-        <div class="area-chip" onclick="nav('area-hoopili')"><div class="dot"></div>Hoopili</div>
-        <div class="area-chip" onclick="nav('area-ewa-beach')"><div class="dot"></div>Ewa Beach</div>
-        <div class="area-chip" onclick="nav('area-ewa-gentry')"><div class="dot"></div>Ewa by Gentry</div>
-        <div class="area-chip" onclick="nav('area-kapolei')"><div class="dot"></div>Kapolei</div>
-        <div class="area-chip" onclick="nav('area-makakilo')"><div class="dot"></div>Makakilo</div>
-        <div class="area-chip" onclick="nav('area-waipahu')"><div class="dot"></div>Waipahu</div>
-        <div class="area-chip" onclick="nav('area-halawa')"><div class="dot"></div>Halawa</div>
-        <div class="area-chip soon"><div class="dot"></div>Kailua (Q2)</div>
-        <div class="area-chip soon"><div class="dot"></div>Kaneohe (Q2)</div>
-        <div class="area-chip soon"><div class="dot"></div>Kaimuki (Q3)</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="cta-sec">
-    <div class="container cta-in">
-      <span class="sec-label reveal" style="color:rgba(255,255,255,.65)">Limited Founding Spots</span>
-      <h2 class="reveal">Be One of Our First Customers</h2>
-      <p class="reveal">Join the launch list and lock in your founding member rate. We'll reach out when we launch in your neighborhood.</p>
-      <button class="btn btn-white reveal" onclick="window.open('https://hawaiibincleaning.com/founding-member','_blank')">🌺 Join the Launch List</button>
-    </div>
-  </section>
-</div>
-<!-- END HOME -->
-
-<!-- ==================== ABOUT ==================== -->
-<div id="page-about" class="page">
-  <div style="background:var(--navy);padding:4rem 0 3rem;color:white">
-    <div class="container">
-      <span class="sec-label reveal">Our Story</span>
-      <h1 class="sec-title reveal" style="color:white;font-size:clamp(2.25rem,5vw,3.5rem)">About Hawaii Bin Cleaning</h1>
-      <p class="reveal" style="color:rgba(255,255,255,.72);font-size:1.0625rem;max-width:560px;line-height:1.75">Local. Family-owned. Built for our community.</p>
-    </div>
-  </div>
-  <div class="wave" style="background:var(--navy)"><svg viewBox="0 0 1440 50" preserveAspectRatio="none" height="50" width="100%"><path d="M0,0 C480,60 960,0 1440,40 L1440,50 L0,50Z" fill="#F5F0E8"/></svg></div>
-  <section class="sec sec-alt" style="padding-top:2.5rem">
-    <div class="container">
-      <div class="g2" style="align-items:center;gap:4rem">
+    <section class="section blue-section">
+      <div class="container split">
         <div>
-          <span class="sec-label reveal">Our Story</span>
-          <h2 class="sec-title reveal">Born Right Here on O'ahu</h2>
-          <p class="reveal" style="font-size:.9375rem;color:var(--gray);line-height:1.85;margin-bottom:1.25rem">Hawaii Bin Cleaning was founded with one simple observation: while bin cleaning services are common on the mainland, O'ahu families had no reliable, local option. We're changing that.</p>
-          <p class="reveal" style="font-size:.9375rem;color:var(--gray);line-height:1.85;margin-bottom:1.25rem">As a family-owned business, we're deeply invested in the health and cleanliness of our neighborhoods — because this is where our family lives, our kids play, and our community thrives.</p>
-          <p class="reveal" style="font-size:.9375rem;color:var(--gray);line-height:1.85">We built Hawaii Bin Cleaning to be the company we'd want to hire: reliable, transparent, eco-friendly, and genuinely committed to doing right by our customers and our island.</p>
+          <span class="eyebrow">Built for our community</span>
+          <h2>Local. Eco-friendly. Family-owned.</h2>
+          <p class="lede">Hawaii Bin Cleaning is being built for island neighborhoods that deserve a cleaner, healthier, more convenient way to deal with trash bins.</p>
+          <p>We are starting with residential service on Oʻahu and plan to grow neighborhood routes based on demand, launch-list interest, and service density.</p>
         </div>
-        <div class="reveal from-r">
-          <div style="background:var(--navy);border-radius:var(--rl);padding:2.5rem;color:white;position:relative;overflow:hidden">
-            <div style="position:absolute;top:-20px;right:-20px;width:120px;height:120px;background:rgba(76,175,80,.12);border-radius:50%"></div>
-            <div style="font-family:'Pacifico',cursive;font-size:1.4rem;color:var(--gb);margin-bottom:1.25rem">Our Mission</div>
-            <p style="font-size:1rem;color:rgba(255,255,255,.88);line-height:1.8;font-style:italic;margin-bottom:1.5rem">"To keep O'ahu's homes healthier and our neighborhoods cleaner — one bin at a time — through professional, eco-friendly service every family can trust."</p>
-            <div style="display:flex;gap:1.5rem;flex-wrap:wrap">
-              <div style="text-align:center"><div style="font-family:'Oswald',sans-serif;font-size:1.875rem;font-weight:700;color:var(--gb)">100%</div><div style="font-size:.75rem;color:rgba(255,255,255,.55)">Family Owned</div></div>
-              <div style="text-align:center"><div style="font-family:'Oswald',sans-serif;font-size:1.875rem;font-weight:700;color:var(--gb)">0</div><div style="font-size:.75rem;color:rgba(255,255,255,.55)">Wastewater Discharged</div></div>
-              <div style="text-align:center"><div style="font-family:'Oswald',sans-serif;font-size:1.875rem;font-weight:700;color:var(--gb)">♾</div><div style="font-size:.75rem;color:rgba(255,255,255,.55)">Community Commitment</div></div>
-            </div>
+        <div class="callout dark" id="customer-portal">
+          <h3>Customer Portal Ready</h3>
+          <p>When Jobber, Jobatory, Urable, or another customer platform is selected, the buttons on this site can point customers to booking, account management, and service updates.</p>
+          <div class="btn-row mt-24">
+            <a class="btn btn-primary" data-platform-link="book" href="/founders-discount">Book / Join List</a>
+            <a class="btn btn-ghost" data-platform-link="portal" href="#customer-portal">Manage Service</a>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-  <section class="sec">
-    <div class="container">
-      <div class="center"><span class="sec-label reveal">Our Values</span><h2 class="sec-title reveal">What We Stand For</h2></div>
-      <div class="g4 stagger">
-        <div class="value-card reveal"><div class="value-ic">🌿</div><h3 style="font-family:'Oswald',sans-serif;font-size:1.1rem;font-weight:700;margin-bottom:.5rem">Eco-Responsibility</h3><p style="font-size:.875rem;color:var(--gray);line-height:1.6">Every drop of greywater is captured. Never released into storm drains or our ocean.</p></div>
-        <div class="value-card reveal"><div class="value-ic">🤝</div><h3 style="font-family:'Oswald',sans-serif;font-size:1.1rem;font-weight:700;margin-bottom:.5rem">Community First</h3><p style="font-size:.875rem;color:var(--gray);line-height:1.6">We hire locally, give back locally, and make decisions that put O'ahu neighborhoods first.</p></div>
-        <div class="value-card reveal"><div class="value-ic">⭐</div><h3 style="font-family:'Oswald',sans-serif;font-size:1.1rem;font-weight:700;margin-bottom:.5rem">Genuine Quality</h3><p style="font-size:.875rem;color:var(--gray);line-height:1.6">We don't rush jobs. Every bin gets the same thorough clean we'd want for our own home.</p></div>
-        <div class="value-card reveal"><div class="value-ic">🔒</div><h3 style="font-family:'Oswald',sans-serif;font-size:1.1rem;font-weight:700;margin-bottom:.5rem">Trustworthy</h3><p style="font-size:.875rem;color:var(--gray);line-height:1.6">Fully insured, background-checked crew. We respect your property and privacy, always.</p></div>
-      </div>
-    </div>
-  </section>
-  <section class="sec sec-alt">
-    <div class="container">
-      <div class="center"><span class="sec-label reveal">Environment</span><h2 class="sec-title reveal">Cleaning Without Harming</h2><p class="sec-sub reveal">Hawaiʻi's environment is precious. Our process is designed to protect it.</p></div>
-      <div class="g3 stagger">
-        <div class="card reveal" style="text-align:center"><div style="font-size:2.25rem;margin-bottom:1rem">🌊</div><h3 style="font-family:'Oswald',sans-serif;font-size:1.15rem;font-weight:700;margin-bottom:.5rem">Zero Ocean Discharge</h3><p style="font-size:.875rem;color:var(--gray);line-height:1.6">All greywater captured and transported to City &amp; County of Honolulu approved disposal facilities.</p></div>
-        <div class="card reveal" style="text-align:center"><div style="font-size:2.25rem;margin-bottom:1rem">🧴</div><h3 style="font-family:'Oswald',sans-serif;font-size:1.15rem;font-weight:700;margin-bottom:.5rem">Biodegradable Products</h3><p style="font-size:.875rem;color:var(--gray);line-height:1.6">EPA-registered, biodegradable cleaning agents safe for your family, pets, and island ecosystems.</p></div>
-        <div class="card reveal" style="text-align:center"><div style="font-size:2.25rem;margin-bottom:1rem">🗺️</div><h3 style="font-family:'Oswald',sans-serif;font-size:1.15rem;font-weight:700;margin-bottom:.5rem">Route Optimization</h3><p style="font-size:.875rem;color:var(--gray);line-height:1.6">Neighborhood clustering minimizes fuel use and reduces our carbon footprint every cleaning day.</p></div>
-      </div>
-    </div>
-  </section>
-  <section class="cta-sec"><div class="container cta-in"><h2 class="reveal">Ready to Join the O'ahu Clean Home Movement?</h2><p class="reveal">Join the launch list and get first access when we launch in your neighborhood.</p><button class="btn btn-white reveal" onclick="window.open('https://hawaiibincleaning.com/founding-member','_blank')">🌺 Join the Launch List</button></div></section>
-</div>
+    </section>
 
-<!-- ==================== SERVICES ==================== -->
-<div id="page-services" class="page">
-  <div style="background:var(--navy);padding:4rem 0 3rem;color:white">
-    <div class="container">
-      <span class="sec-label reveal">Professional Cleaning</span>
-      <h1 class="sec-title reveal" style="color:white;font-size:clamp(2.25rem,5vw,3.5rem)">Our Services &amp; Equipment</h1>
-      <p class="reveal" style="color:rgba(255,255,255,.72);font-size:1.0625rem;max-width:580px;line-height:1.75">Purpose-built equipment. Professional-grade results. Zero environmental compromise.</p>
-    </div>
-  </div>
-  <div class="wave" style="background:var(--navy)"><svg viewBox="0 0 1440 50" preserveAspectRatio="none" height="50" width="100%"><path d="M0,0 C480,60 960,0 1440,40 L1440,50 L0,50Z" fill="#F5F0E8"/></svg></div>
-
-  <!-- HOW THE TRUCK WORKS -->
-  <section class="sec sec-alt" style="padding-top:2.5rem">
-    <div class="container">
-      <span class="sec-label reveal">The Equipment</span>
-      <h2 class="sec-title reveal">How Our Cleaning Truck Works</h2>
-      <p class="sec-sub reveal">Six steps from curb to clean. Here's exactly what happens when our truck arrives at your street.</p>
-
-      <div class="g2" style="align-items:start;gap:2.5rem">
-        <div>
-          <div class="equip-step reveal">
-            <div class="equip-icon" style="background:#E8F5E9">🚛</div>
-            <div>
-              <div class="equip-title">Step 1 — The Truck Arrives</div>
-              <p class="equip-desc">Our purpose-built mobile cleaning unit arrives at your curb after the City's garbage truck has already passed. The truck is completely self-contained — carrying up to 500 gallons of fresh water and a sealed 300-gallon greywater capture tank. We never need access to your home's water supply.</p>
-              <span class="equip-tag">Self-contained · No hookups needed</span>
+    <section class="section" id="join-launch-list">
+      <div class="container callout">
+        <div class="split">
+          <div>
+            <span class="eyebrow">Founders discount</span>
+            <h2>Reserve your spot before routes open.</h2>
+            <p class="lede">Be one of the first customers and get notified when Hawaii Bin Cleaning launches service in your area.</p>
+            <p>The dedicated founders discount page is set up at <strong>hawaiibincleaning.com/founders-discount</strong> for door hangers, QR codes, and launch-list campaigns.</p>
+            <div class="btn-row mt-24">
+              <a class="btn btn-primary" href="/founders-discount">Join Founders List</a>
+              <a class="btn btn-secondary" href="/services">View Services</a>
             </div>
           </div>
-
-          <div class="equip-step reveal">
-            <div class="equip-icon" style="background:#E3F2FD">🦾</div>
-            <div>
-              <div class="equip-title">Step 2 — Dual Bin Grabber</div>
-              <p class="equip-desc">This is what separates us from the competition. Our hydraulic dual bin grabber extends and latches onto two bins simultaneously by their handles. Both bins are lifted, inverted, and positioned over the cleaning chamber in one motion — cleaning two bins in the time others spend on one. That efficiency means faster service and lower cost for you.</p>
-              <span class="equip-tag">2 bins at once · Hydraulic lift system</span>
-            </div>
-          </div>
-
-          <div class="equip-step reveal">
-            <div class="equip-icon" style="background:#FFF8E1">🌡️</div>
-            <div>
-              <div class="equip-title">Step 3 — High-Pressure Hot Water Spray</div>
-              <p class="equip-desc">With both bins fully inverted, our 360° rotating spray nozzles fire water heated to 160°F+ at high pressure into every corner, crevice, and surface of the bin. The combination of extreme heat and pressure destroys biofilm, removes stuck-on debris, food residue, and kills bacteria that cold water simply cannot touch. No scrubbing required — the physics do the work.</p>
-              <span class="equip-tag">160°F+ · 360° rotating coverage</span>
-            </div>
-          </div>
-        </div>
-        <div>
-          <div class="equip-step reveal">
-            <div class="equip-icon" style="background:#F3E5F5">🧴</div>
-            <div>
-              <div class="equip-title">Step 4 — Disinfect &amp; Deodorize</div>
-              <p class="equip-desc">After the hot-water blast, we apply EPA-registered disinfectant that kills 99.9% of bacteria — including E. coli, salmonella, and listeria. We then apply our odor-neutralizing treatment that destroys the organic compounds responsible for bad smells at the molecular source. Not a cover-up. Not a fragrance. An actual chemical elimination of the odor.</p>
-              <span class="equip-tag">99.9% bacteria kill · EPA-registered</span>
-            </div>
-          </div>
-
-          <div class="equip-step reveal">
-            <div class="equip-icon" style="background:#E0F4F7">🌊</div>
-            <div>
-              <div class="equip-title">Step 5 — Greywater Capture</div>
-              <p class="equip-desc">Every drop of dirty water — including all the bacteria, grime, and cleaning solution — is captured in our sealed 300-gallon greywater tank. Not a drop reaches the curb, the gutter, or the storm drain. In O'ahu, storm drains flow directly to the ocean. We take this seriously. All captured greywater is transported to City &amp; County of Honolulu approved discharge facilities and handled in full compliance with State and County environmental regulations.</p>
-              <span class="equip-tag">Zero discharge · Ocean-safe · Fully compliant</span>
-            </div>
-          </div>
-
-          <div class="equip-step reveal">
-            <div class="equip-icon" style="background:#E8F5E9">✅</div>
-            <div>
-              <div class="equip-title">Step 6 — Bins Returned, Job Logged</div>
-              <p class="equip-desc">Both cleaned bins are placed back at your curb. We log the job complete in our system and you receive a notification. Total time at your property: 5–10 minutes. Your bins are sanitized, deodorized, and ready to go back to the garage. We'll be back next month — or next quarter — automatically.</p>
-              <span class="equip-tag">5–10 min service · Automatic recurring</span>
-            </div>
+          <div class="image-card">
+            <picture>
+              <source srcset="assets/images/hbc-truck-transparent.webp" type="image/webp">
+              <img src="assets/images/hbc-truck-transparent.png" alt="Hawaii Bin Cleaning launch truck illustration">
+            </picture>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- WHAT WE CLEAN -->
-  <section class="sec">
-    <div class="container">
-      <div class="center"><span class="sec-label reveal">What We Clean</span><h2 class="sec-title reveal">Every Bin Type, Every Time</h2><p class="sec-sub reveal">We clean all City &amp; County of Honolulu standard bins.</p></div>
-      <div class="g4 stagger">
-        <div class="card reveal" style="text-align:center"><div style="font-size:2.25rem;margin-bottom:1rem">🗑</div><h3 style="font-family:'Oswald',sans-serif;font-size:1.15rem;font-weight:700;margin-bottom:.5rem">Trash Bins</h3><p style="font-size:.875rem;color:var(--gray);line-height:1.6">Gray carts. Your main garbage bin. The dirtiest of the three — and the most important to clean regularly.</p></div>
-        <div class="card reveal" style="text-align:center"><div style="font-size:2.25rem;margin-bottom:1rem">♻️</div><h3 style="font-family:'Oswald',sans-serif;font-size:1.15rem;font-weight:700;margin-bottom:.5rem">Recycling Bins</h3><p style="font-size:.875rem;color:var(--gray);line-height:1.6">Blue carts. Food and liquid residue builds up here too. We clean and sanitize to prevent odor and mold.</p></div>
-        <div class="card reveal" style="text-align:center"><div style="font-size:2.25rem;margin-bottom:1rem">🌿</div><h3 style="font-family:'Oswald',sans-serif;font-size:1.15rem;font-weight:700;margin-bottom:.5rem">Green Waste</h3><p style="font-size:.875rem;color:var(--gray);line-height:1.6">Green carts. Yard waste decomposes and breeds bacteria. Regular cleaning prevents pest attraction.</p></div>
-        <div class="card reveal" style="text-align:center"><div style="font-size:2.25rem;margin-bottom:1rem">🚿</div><h3 style="font-family:'Oswald',sans-serif;font-size:1.15rem;font-weight:700;margin-bottom:.5rem">Pressure Washing</h3><p style="font-size:.875rem;color:var(--gray);line-height:1.6">Add-on service for driveways, walkways, and patios. Contact us for custom pricing.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec sec-navy">
-    <div class="container">
-      <div class="center"><span class="sec-label reveal">Why Professional Equipment Matters</span><h2 class="sec-title reveal" style="color:white">DIY vs. Professional</h2></div>
-      <div class="g2 stagger" style="margin-top:2.5rem">
-        <div class="reveal" style="background:rgba(255,255,255,.05);border-radius:var(--rl);padding:2rem;border:1px solid rgba(255,255,255,.1)">
-          <div style="font-family:'Oswald',sans-serif;font-size:1.1rem;font-weight:700;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:1px;margin-bottom:1.25rem">DIY Garden Hose</div>
-          <div style="font-size:.9rem;color:rgba(255,255,255,.65);line-height:2">✗ Cold water — bacteria survive<br>✗ Low pressure — debris stays stuck<br>✗ Greywater flows to storm drain<br>✗ No disinfection applied<br>✗ Odor returns within days<br>✗ Your time — 20+ minutes per bin</div>
-        </div>
-        <div class="reveal" style="background:rgba(76,175,80,.12);border-radius:var(--rl);padding:2rem;border:1px solid rgba(76,175,80,.3)">
-          <div style="font-family:'Oswald',sans-serif;font-size:1.1rem;font-weight:700;color:var(--gb);text-transform:uppercase;letter-spacing:1px;margin-bottom:1.25rem">Hawaii Bin Cleaning</div>
-          <div style="font-size:.9rem;color:rgba(255,255,255,.85);line-height:2">✓ 160°F hot water — bacteria destroyed<br>✓ High pressure — everything removed<br>✓ 100% greywater captured — ocean safe<br>✓ EPA disinfectant applied<br>✓ Odor neutralized at the source<br>✓ Your time — 0 minutes</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="cta-sec"><div class="container cta-in"><h2 class="reveal">Ready for Professionally Clean Bins?</h2><p class="reveal">Join the launch list and be first in line when we launch in your neighborhood.</p><button class="btn btn-white reveal" onclick="window.open('https://hawaiibincleaning.com/founding-member','_blank')">🌺 Join the Launch List</button></div></section>
-</div>
-
-<!-- ==================== BLOG ==================== -->
-<div id="page-blog" class="page">
-  <div style="background:var(--navy);padding:4rem 0 3rem;color:white"><div class="container"><span class="sec-label reveal">Tips &amp; Insights</span><h1 class="sec-title reveal" style="color:white;font-size:clamp(2.25rem,5vw,3.5rem)">The Clean Bin Blog</h1><p class="reveal" style="color:rgba(255,255,255,.72);font-size:1.0625rem;max-width:560px;line-height:1.75">Everything about bin hygiene, Hawaii home care, and a cleaner community.</p></div></div>
-  <div class="wave" style="background:var(--navy)"><svg viewBox="0 0 1440 50" preserveAspectRatio="none" height="50" width="100%"><path d="M0,0 C480,60 960,0 1440,40 L1440,50 L0,50Z" fill="#F5F0E8"/></svg></div>
-  <section class="sec sec-alt" style="padding-top:2.5rem">
-    <div class="container">
-      <div class="g2 stagger">
-        <div class="blog-card reveal"><div class="blog-thumb" style="background:#E8F5E9">🦟</div><div class="blog-body"><div class="blog-cat">Pest Prevention</div><div class="blog-title">Why Hawaii's Climate Makes Dirty Bins a Pest Magnet</div><div class="blog-exc">Year-round warmth and humidity creates perfect breeding conditions for flies, cockroaches, and maggots inside unwashed bins.</div><div class="blog-meta">December 15, 2024 · 4 min read</div></div></div>
-        <div class="blog-card reveal"><div class="blog-thumb" style="background:#E3F2FD">🦠</div><div class="blog-body"><div class="blog-cat">Health &amp; Safety</div><div class="blog-title">The Bacteria Hiding in Your Trash Can (And How to Stop It)</div><div class="blog-exc">Studies have found E. coli, salmonella, and listeria living in unwashed household bins. Here's what a proper professional clean actually does.</div><div class="blog-meta">December 8, 2024 · 6 min read</div></div></div>
-        <div class="blog-card reveal"><div class="blog-thumb" style="background:#FFF8E1">🌊</div><div class="blog-body"><div class="blog-cat">Environment</div><div class="blog-title">How Eco-Friendly Bin Cleaning Protects Hawaiʻi's Reefs &amp; Ocean</div><div class="blog-exc">Most DIY bin cleaning sends dirty water straight into storm drains — and then the ocean. Here's why greywater capture matters so much on an island.</div><div class="blog-meta">November 28, 2024 · 5 min read</div></div></div>
-        <div class="blog-card reveal"><div class="blog-thumb" style="background:#F3E5F5">🏡</div><div class="blog-body"><div class="blog-cat">Home Tips</div><div class="blog-title">5 Ways to Reduce Bin Odor Between Professional Cleanings</div><div class="blog-exc">Even with regular professional cleaning, bins can start to smell in Hawaii's heat. These simple habits make a big difference between service visits.</div><div class="blog-meta">November 20, 2024 · 3 min read</div></div></div>
-      </div>
-    </div>
-  </section>
-</div>
-
-<!-- ==================== FAQ ==================== -->
-<div id="page-faq" class="page">
-  <div style="background:var(--navy);padding:4rem 0 3rem;color:white"><div class="container"><span class="sec-label reveal">Got Questions?</span><h1 class="sec-title reveal" style="color:white;font-size:clamp(2.25rem,5vw,3.5rem)">Frequently Asked Questions</h1><p class="reveal" style="color:rgba(255,255,255,.72);font-size:1.0625rem;max-width:560px;line-height:1.75">Everything you need to know about our service, schedule, and coverage.</p></div></div>
-  <div class="wave" style="background:var(--navy)"><svg viewBox="0 0 1440 50" preserveAspectRatio="none" height="50" width="100%"><path d="M0,0 C480,60 960,0 1440,40 L1440,50 L0,50Z" fill="#fff"/></svg></div>
-  <section class="sec" style="padding-top:2.5rem">
-    <div class="container" style="max-width:800px">
-      <h3 style="font-family:'Oswald',sans-serif;font-size:1.15rem;font-weight:600;margin-bottom:1.25rem;color:var(--green)">📅 Scheduling &amp; Service</h3>
-      <div class="faq-item open"><button class="faq-q" onclick="toggleFaq(this)"><span>When exactly do you clean my bins?</span><span class="faq-ch">▾</span></button><div class="faq-a">We clean your bins after the City &amp; County garbage truck has already emptied and passed. You don't need to be home — leave bins at the curb as normal and our crew handles everything. We send a notification when complete.</div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span>Do I need to be home?</span><span class="faq-ch">▾</span></button><div class="faq-a">Nope! Leave bins at the curb on your collection day and we do the rest. No access to your property needed — we work entirely from the public curb.</div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span>How do I find out my trash collection day?</span><span class="faq-ch">▾</span></button><div class="faq-a">Look up your specific collection day at opala.hnl.info using your home address. City &amp; County of Honolulu collects on Mon/Thu, Tue/Fri, or Wed/Sat patterns depending on your street.</div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span>How long does each cleaning take?</span><span class="faq-ch">▾</span></button><div class="faq-a">Our dual bin grabber system cleans two bins simultaneously. Total time at your property is 5–10 minutes — most customers never even notice we've been there until they bring in fresh, clean bins.</div></div>
-      <h3 style="font-family:'Oswald',sans-serif;font-size:1.15rem;font-weight:600;margin:2.5rem 0 1.25rem;color:var(--green)">🌿 Environment &amp; Safety</h3>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span>What happens to the dirty water?</span><span class="faq-ch">▾</span></button><div class="faq-a">All greywater is captured in our sealed 300-gallon onboard tank — nothing reaches the ground, curb, or storm drain. It's then transported to City &amp; County of Honolulu approved sewer discharge facilities. We maintain full environmental compliance documentation.</div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span>Are your products safe for kids and pets?</span><span class="faq-ch">▾</span></button><div class="faq-a">Yes. We use EPA-registered, biodegradable cleaning agents that are effective against bacteria but safe for children and pets once dry. No harsh bleach or toxic residues.</div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span>Do you need to use our water supply?</span><span class="faq-ch">▾</span></button><div class="faq-a">Never. Our truck carries its own water supply — up to 500 gallons of fresh water. We are 100% self-contained and never need to connect to your home's water.</div></div>
-      <h3 style="font-family:'Oswald',sans-serif;font-size:1.15rem;font-weight:600;margin:2.5rem 0 1.25rem;color:var(--green)">📍 Service Areas</h3>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span>What areas do you currently serve?</span><span class="faq-ch">▾</span></button><div class="faq-a">We are launching in West and Central O'ahu first: Pearl City, Aiea, Mililani, Waipio, Hoopili, Ewa Beach, Ewa by Gentry, Kapolei, Makakilo, Waipahu, and Halawa. Kailua and Kaneohe are coming Q2 2026. Join the launch list to get notified when we reach your neighborhood.</div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span>My neighborhood isn't listed — what should I do?</span><span class="faq-ch">▾</span></button><div class="faq-a">Join the launch list at hawaiibincleaning.com/founding-member. We prioritize expansion based on demand — if enough people in your area sign up, you move to the top of our list. You'll also lock in the founding member rate.</div></div>
-    </div>
-  </section>
-  <section class="cta-sec"><div class="container cta-in"><h2 class="reveal">Still Have Questions?</h2><p class="reveal">Reach out directly or join the launch list and we'll be in touch.</p><div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap"><a href="mailto:aloha@hawaiibincleaning.com" class="btn btn-white">📧 Email Us</a><button class="btn btn-ow reveal" onclick="window.open('https://hawaiibincleaning.com/founding-member','_blank')">🌺 Join Launch List</button></div></div></section>
-</div>
-
-<!-- ==================== SERVICE AREA PAGES ==================== -->
-
-<!-- Helper macro for area pages -->
-<!-- Pearl City -->
-<div id="page-area-pearl-city" class="page">
-  <div style="background:var(--navy);padding:4rem 0 3rem;color:white"><div class="container"><span class="sec-label">Service Area</span><h1 style="font-family:'Oswald',sans-serif;font-size:clamp(2rem,5vw,3.25rem);font-weight:700;color:white;margin-bottom:.75rem">Bin Cleaning in Pearl City, O'ahu</h1><p style="color:rgba(255,255,255,.72);max-width:560px;line-height:1.75">Professional trash bin cleaning, sanitizing &amp; deodorizing for Pearl City homes.</p></div></div>
-  <div class="wave" style="background:var(--navy)"><svg viewBox="0 0 1440 50" preserveAspectRatio="none" height="50" width="100%"><path d="M0,0 C480,60 960,0 1440,40 L1440,50 L0,50Z" fill="#F5F0E8"/></svg></div>
-  <section class="sec sec-alt" style="padding-top:2.5rem"><div class="container"><div class="g2" style="align-items:start;gap:3rem"><div><span class="sec-label">Pearl City</span><h2 class="sec-title">Serving Pearl City Homes</h2><p style="font-size:.9375rem;color:var(--gray);line-height:1.85;margin-bottom:1.25rem">Pearl City is one of O'ahu's most established residential communities, with thousands of single-family homes and townhomes spread across its neighborhoods. With Wednesday trash collection serving most of the area, we've designed our Pearl City route to maximize efficiency and get to every home quickly.</p><p style="font-size:.9375rem;color:var(--gray);line-height:1.85;margin-bottom:1.5rem">Hawaii's tropical climate means bins in Pearl City accumulate bacteria and odors faster than on the mainland. Our hot-water cleaning system and greywater capture ensure every Pearl City home gets a professional clean without a drop of wastewater hitting the ground.</p><div class="area-info"><div class="area-info-chip">📅 Trash day: Wednesday (most streets)</div><div class="area-info-chip">🏠 Single-family &amp; townhomes</div><div class="area-info-chip">📍 Central O'ahu</div></div></div><div><div style="background:var(--navy);border-radius:var(--rl);padding:2rem;color:white"><h3 style="font-family:'Oswald',sans-serif;font-size:1.35rem;font-weight:700;margin-bottom:.75rem">Join the Pearl City Launch List</h3><p style="font-size:.9rem;color:rgba(255,255,255,.7);line-height:1.7;margin-bottom:1.5rem">Be the first in Pearl City to sign up. Lock in your founding member rate when we launch.</p><button class="btn btn-primary" style="width:100%;justify-content:center" onclick="window.open('https://hawaiibincleaning.com/founding-member','_blank')">🌺 Join the Launch List</button></div></div></div></div></section>
-  <section class="cta-sec"><div class="container cta-in"><h2>Ready for Clean Bins in Pearl City?</h2><p>Join the launch list and we'll reach out when your neighborhood is live.</p><button class="btn btn-white" onclick="window.open('https://hawaiibincleaning.com/founding-member','_blank')">🌺 Join the Launch List</button></div></section>
-</div>
-
-<!-- Mililani -->
-<div id="page-area-mililani" class="page">
-  <div style="background:var(--navy);padding:4rem 0 3rem;color:white"><div class="container"><span class="sec-label">Service Area</span><h1 style="font-family:'Oswald',sans-serif;font-size:clamp(2rem,5vw,3.25rem);font-weight:700;color:white;margin-bottom:.75rem">Bin Cleaning in Mililani, O'ahu</h1><p style="color:rgba(255,255,255,.72);max-width:560px;line-height:1.75">Professional trash bin cleaning for Mililani's planned community neighborhoods.</p></div></div>
-  <div class="wave" style="background:var(--navy)"><svg viewBox="0 0 1440 50" preserveAspectRatio="none" height="50" width="100%"><path d="M0,0 C480,60 960,0 1440,40 L1440,50 L0,50Z" fill="#F5F0E8"/></svg></div>
-  <section class="sec sec-alt" style="padding-top:2.5rem"><div class="container"><div class="g2" style="align-items:start;gap:3rem"><div><span class="sec-label">Mililani</span><h2 class="sec-title">Serving Mililani &amp; Mililani Mauka</h2><p style="font-size:.9375rem;color:var(--gray);line-height:1.85;margin-bottom:1.25rem">Mililani is one of the largest planned communities in the United States — a meticulously maintained residential area with high HOA standards and community pride. It's exactly the kind of neighborhood that understands the value of clean, hygienic bins.</p><p style="font-size:.9375rem;color:var(--gray);line-height:1.85;margin-bottom:1.5rem">With Wednesday collection serving most of Mililani, our route efficiency means we can service a high concentration of homes on a single day — passing the savings on to customers through competitive pricing.</p><div class="area-info"><div class="area-info-chip">📅 Trash day: Wednesday</div><div class="area-info-chip">🏘️ Planned community</div><div class="area-info-chip">🌿 HOA neighborhoods</div></div></div><div><div style="background:var(--navy);border-radius:var(--rl);padding:2rem;color:white"><h3 style="font-family:'Oswald',sans-serif;font-size:1.35rem;font-weight:700;margin-bottom:.75rem">Join the Mililani Launch List</h3><p style="font-size:.9rem;color:rgba(255,255,255,.7);line-height:1.7;margin-bottom:1.5rem">Be the first in Mililani to sign up and lock in your founding member rate.</p><button class="btn btn-primary" style="width:100%;justify-content:center" onclick="window.open('https://hawaiibincleaning.com/founding-member','_blank')">🌺 Join the Launch List</button></div></div></div></div></section>
-  <section class="cta-sec"><div class="container cta-in"><h2>Ready for Clean Bins in Mililani?</h2><p>Join the launch list and we'll reach out when your neighborhood is live.</p><button class="btn btn-white" onclick="window.open('https://hawaiibincleaning.com/founding-member','_blank')">🌺 Join the Launch List</button></div></section>
-</div>
-
-<!-- Aiea -->
-<div id="page-area-aiea" class="page">
-  <div style="background:var(--navy);padding:4rem 0 3rem;color:white"><div class="container"><span class="sec-label">Service Area</span><h1 style="font-family:'Oswald',sans-serif;font-size:clamp(2rem,5vw,3.25rem);font-weight:700;color:white;margin-bottom:.75rem">Bin Cleaning in Aiea, O'ahu</h1><p style="color:rgba(255,255,255,.72);max-width:560px;line-height:1.75">Professional trash bin cleaning for Aiea's established neighborhoods.</p></div></div>
-  <div class="wave" style="background:var(--navy)"><svg viewBox="0 0 1440 50" preserveAspectRatio="none" height="50" width="100%"><path d="M0,0 C480,60 960,0 1440,40 L1440,50 L0,50Z" fill="#F5F0E8"/></svg></div>
-  <section class="sec sec-alt" style="padding-top:2.5rem"><div class="container"><div class="g2" style="align-items:start;gap:3rem"><div><span class="sec-label">Aiea</span><h2 class="sec-title">Serving Aiea</h2><p style="font-size:.9375rem;color:var(--gray);line-height:1.85;margin-bottom:1.25rem">Aiea's hillside neighborhoods and valley communities are part of our core West O'ahu launch route. With Wednesday collection across most of the area, Aiea homes benefit from the same route efficiency as Pearl City — meaning faster service and competitive rates.</p><div class="area-info"><div class="area-info-chip">📅 Trash day: Wednesday</div><div class="area-info-chip">🏠 Established neighborhoods</div><div class="area-info-chip">📍 Central O'ahu</div></div></div><div><div style="background:var(--navy);border-radius:var(--rl);padding:2rem;color:white"><h3 style="font-family:'Oswald',sans-serif;font-size:1.35rem;font-weight:700;margin-bottom:.75rem">Join the Aiea Launch List</h3><p style="font-size:.9rem;color:rgba(255,255,255,.7);line-height:1.7;margin-bottom:1.5rem">Be first in Aiea and lock in your founding member rate.</p><button class="btn btn-primary" style="width:100%;justify-content:center" onclick="window.open('https://hawaiibincleaning.com/founding-member','_blank')">🌺 Join the Launch List</button></div></div></div></div></section>
-  <section class="cta-sec"><div class="container cta-in"><h2>Ready for Clean Bins in Aiea?</h2><button class="btn btn-white" onclick="window.open('https://hawaiibincleaning.com/founding-member','_blank')">🌺 Join the Launch List</button></div></section>
-</div>
-
-<!-- Waipio -->
-<div id="page-area-waipio" class="page">
-  <div style="background:var(--navy);padding:4rem 0 3rem;color:white"><div class="container"><span class="sec-label">Service Area</span><h1 style="font-family:'Oswald',sans-serif;font-size:clamp(2rem,5vw,3.25rem);font-weight:700;color:white;margin-bottom:.75rem">Bin Cleaning in Waipio, O'ahu</h1><p style="color:rgba(255,255,255,.72);max-width:560px;line-height:1.75">Serving Waipio and Waipio Gentry with professional bin cleaning.</p></div></div>
-  <div class="wave" style="background:var(--navy)"><svg viewBox="0 0 1440 50" preserveAspectRatio="none" height="50" width="100%"><path d="M0,0 C480,60 960,0 1440,40 L1440,50 L0,50Z" fill="#F5F0E8"/></svg></div>
-  <section class="sec sec-alt" style="padding-top:2.5rem"><div class="container"><div class="g2" style="align-items:start;gap:3rem"><div><span class="sec-label">Waipio</span><h2 class="sec-title">Serving Waipio &amp; Waipio Gentry</h2><p style="font-size:.9375rem;color:var(--gray);line-height:1.85;margin-bottom:1.25rem">Waipio and Waipio Gentry are dense, family-oriented communities that share Wednesday trash collection with neighboring Pearl City and Aiea. This makes the area ideal for our route efficiency model — more homes per hour means lower cost per customer.</p><div class="area-info"><div class="area-info-chip">📅 Trash day: Wednesday</div><div class="area-info-chip">🏠 Family neighborhoods</div><div class="area-info-chip">📍 West O'ahu</div></div></div><div><div style="background:var(--navy);border-radius:var(--rl);padding:2rem;color:white"><h3 style="font-family:'Oswald',sans-serif;font-size:1.35rem;font-weight:700;margin-bottom:.75rem">Join the Waipio Launch List</h3><p style="font-size:.9rem;color:rgba(255,255,255,.7);line-height:1.7;margin-bottom:1.5rem">Lock in your founding member rate for Waipio.</p><button class="btn btn-primary" style="width:100%;justify-content:center" onclick="window.open('https://hawaiibincleaning.com/founding-member','_blank')">🌺 Join the Launch List</button></div></div></div></div></section>
-  <section class="cta-sec"><div class="container cta-in"><h2>Ready for Clean Bins in Waipio?</h2><button class="btn btn-white" onclick="window.open('https://hawaiibincleaning.com/founding-member','_blank')">🌺 Join the Launch List</button></div></section>
-</div>
-
-<!-- Hoopili -->
-<div id="page-area-hoopili" class="page">
-  <div style="background:var(--navy);padding:4rem 0 3rem;color:white"><div class="container"><span class="sec-label">Service Area</span><h1 style="font-family:'Oswald',sans-serif;font-size:clamp(2rem,5vw,3.25rem);font-weight:700;color:white;margin-bottom:.75rem">Bin Cleaning in Ho'opili, O'ahu</h1><p style="color:rgba(255,255,255,.72);max-width:560px;line-height:1.75">Serving O'ahu's newest master-planned community with professional bin cleaning.</p></div></div>
-  <div class="wave" style="background:var(--navy)"><svg viewBox="0 0 1440 50" preserveAspectRatio="none" height="50" width="100%"><path d="M0,0 C480,60 960,0 1440,40 L1440,50 L0,50Z" fill="#F5F0E8"/></svg></div>
-  <section class="sec sec-alt" style="padding-top:2.5rem"><div class="container"><div class="g2" style="align-items:start;gap:3rem"><div><span class="sec-label">Ho'opili</span><h2 class="sec-title">Serving Ho'opili</h2><p style="font-size:.9375rem;color:var(--gray);line-height:1.85;margin-bottom:1.25rem">Ho'opili is one of O'ahu's newest and most exciting master-planned communities — thousands of new homes built with modern infrastructure and community-focused design. As a new development, it's the perfect launch market for Hawaii Bin Cleaning: dense streets, new families, and a community that values keeping things clean and well-maintained.</p><p style="font-size:.9375rem;color:var(--gray);line-height:1.85;margin-bottom:1.5rem">Please verify your specific trash collection day at opala.hnl.info as Ho'opili's routes were set up as the community developed.</p><div class="area-info"><div class="area-info-chip">📅 Trash day: Verify at opala.hnl.info</div><div class="area-info-chip">🏘️ Master-planned community</div><div class="area-info-chip">📍 Ewa / Kapolei area</div></div></div><div><div style="background:var(--navy);border-radius:var(--rl);padding:2rem;color:white"><h3 style="font-family:'Oswald',sans-serif;font-size:1.35rem;font-weight:700;margin-bottom:.75rem">Join the Ho'opili Launch List</h3><p style="font-size:.9rem;color:rgba(255,255,255,.7);line-height:1.7;margin-bottom:1.5rem">Be one of the first Ho'opili residents to lock in founding member pricing.</p><button class="btn btn-primary" style="width:100%;justify-content:center" onclick="window.open('https://hawaiibincleaning.com/founding-member','_blank')">🌺 Join the Launch List</button></div></div></div></div></section>
-  <section class="cta-sec"><div class="container cta-in"><h2>Ready for Clean Bins in Ho'opili?</h2><button class="btn btn-white" onclick="window.open('https://hawaiibincleaning.com/founding-member','_blank')">🌺 Join the Launch List</button></div></section>
-</div>
-
-<!-- Ewa Beach -->
-<div id="page-area-ewa-beach" class="page">
-  <div style="background:var(--navy);padding:4rem 0 3rem;color:white"><div class="container"><span class="sec-label">Service Area</span><h1 style="font-family:'Oswald',sans-serif;font-size:clamp(2rem,5vw,3.25rem);font-weight:700;color:white;margin-bottom:.75rem">Bin Cleaning in Ewa Beach, O'ahu</h1><p style="color:rgba(255,255,255,.72);max-width:560px;line-height:1.75">Professional bin cleaning for Ewa Beach's growing family community.</p></div></div>
-  <div class="wave" style="background:var(--navy)"><svg viewBox="0 0 1440 50" preserveAspectRatio="none" height="50" width="100%"><path d="M0,0 C480,60 960,0 1440,40 L1440,50 L0,50Z" fill="#F5F0E8"/></svg></div>
-  <section class="sec sec-alt" style="padding-top:2.5rem"><div class="container"><div class="g2" style="align-items:start;gap:3rem"><div><span class="sec-label">Ewa Beach</span><h2 class="sec-title">Serving Ewa Beach</h2><p style="font-size:.9375rem;color:var(--gray);line-height:1.85;margin-bottom:1.25rem">Ewa Beach has grown rapidly into one of O'ahu's largest residential areas — thousands of newer homes with young families who care about keeping their neighborhoods clean and healthy. With high bin density per block and a community-minded culture, Ewa Beach is a priority launch area for Hawaii Bin Cleaning.</p><div class="area-info"><div class="area-info-chip">📅 Trash day: Verify at opala.hnl.info</div><div class="area-info-chip">🏠 High-density residential</div><div class="area-info-chip">📍 West O'ahu</div></div></div><div><div style="background:var(--navy);border-radius:var(--rl);padding:2rem;color:white"><h3 style="font-family:'Oswald',sans-serif;font-size:1.35rem;font-weight:700;margin-bottom:.75rem">Join the Ewa Beach Launch List</h3><p style="font-size:.9rem;color:rgba(255,255,255,.7);line-height:1.7;margin-bottom:1.5rem">Lock in founding member pricing for Ewa Beach.</p><button class="btn btn-primary" style="width:100%;justify-content:center" onclick="window.open('https://hawaiibincleaning.com/founding-member','_blank')">🌺 Join the Launch List</button></div></div></div></div></section>
-  <section class="cta-sec"><div class="container cta-in"><h2>Ready for Clean Bins in Ewa Beach?</h2><button class="btn btn-white" onclick="window.open('https://hawaiibincleaning.com/founding-member','_blank')">🌺 Join the Launch List</button></div></section>
-</div>
-
-<!-- Ewa by Gentry -->
-<div id="page-area-ewa-gentry" class="page">
-  <div style="background:var(--navy);padding:4rem 0 3rem;color:white"><div class="container"><span class="sec-label">Service Area</span><h1 style="font-family:'Oswald',sans-serif;font-size:clamp(2rem,5vw,3.25rem);font-weight:700;color:white;margin-bottom:.75rem">Bin Cleaning in Ewa by Gentry, O'ahu</h1><p style="color:rgba(255,255,255,.72);max-width:560px;line-height:1.75">Serving Ewa by Gentry's master-planned neighborhood with professional bin cleaning.</p></div></div>
-  <div class="wave" style="background:var(--navy)"><svg viewBox="0 0 1440 50" preserveAspectRatio="none" height="50" width="100%"><path d="M0,0 C480,60 960,0 1440,40 L1440,50 L0,50Z" fill="#F5F0E8"/></svg></div>
-  <section class="sec sec-alt" style="padding-top:2.5rem"><div class="container"><div class="g2" style="align-items:start;gap:3rem"><div><span class="sec-label">Ewa by Gentry</span><h2 class="sec-title">Serving Ewa by Gentry</h2><p style="font-size:.9375rem;color:var(--gray);line-height:1.85;margin-bottom:1.25rem">Ewa by Gentry is a well-maintained planned community known for its clean streets and active HOA. The neighborhood's organized layout makes it ideal for our route-based cleaning model — dense streets, consistent bin placement, and a community that values quality home services.</p><div class="area-info"><div class="area-info-chip">📅 Trash day: Verify at opala.hnl.info</div><div class="area-info-chip">🏘️ HOA community</div><div class="area-info-chip">📍 West O'ahu</div></div></div><div><div style="background:var(--navy);border-radius:var(--rl);padding:2rem;color:white"><h3 style="font-family:'Oswald',sans-serif;font-size:1.35rem;font-weight:700;margin-bottom:.75rem">Join the Ewa by Gentry Launch List</h3><p style="font-size:.9rem;color:rgba(255,255,255,.7);line-height:1.7;margin-bottom:1.5rem">Reserve your founding member spot.</p><button class="btn btn-primary" style="width:100%;justify-content:center" onclick="window.open('https://hawaiibincleaning.com/founding-member','_blank')">🌺 Join the Launch List</button></div></div></div></div></section>
-  <section class="cta-sec"><div class="container cta-in"><h2>Ready for Clean Bins in Ewa by Gentry?</h2><button class="btn btn-white" onclick="window.open('https://hawaiibincleaning.com/founding-member','_blank')">🌺 Join the Launch List</button></div></section>
-</div>
-
-<!-- Kapolei -->
-<div id="page-area-kapolei" class="page">
-  <div style="background:var(--navy);padding:4rem 0 3rem;color:white"><div class="container"><span class="sec-label">Service Area</span><h1 style="font-family:'Oswald',sans-serif;font-size:clamp(2rem,5vw,3.25rem);font-weight:700;color:white;margin-bottom:.75rem">Bin Cleaning in Kapolei, O'ahu</h1><p style="color:rgba(255,255,255,.72);max-width:560px;line-height:1.75">O'ahu's second city — professional bin cleaning for Kapolei homes and communities.</p></div></div>
-  <div class="wave" style="background:var(--navy)"><svg viewBox="0 0 1440 50" preserveAspectRatio="none" height="50" width="100%"><path d="M0,0 C480,60 960,0 1440,40 L1440,50 L0,50Z" fill="#F5F0E8"/></svg></div>
-  <section class="sec sec-alt" style="padding-top:2.5rem"><div class="container"><div class="g2" style="align-items:start;gap:3rem"><div><span class="sec-label">Kapolei</span><h2 class="sec-title">Serving Kapolei</h2><p style="font-size:.9375rem;color:var(--gray);line-height:1.85;margin-bottom:1.25rem">Known as O'ahu's "second city," Kapolei has grown into a major residential hub with a wide range of neighborhoods — from established family homes to newer developments. Hawaii Bin Cleaning's Kapolei route will serve both the residential areas and surrounding communities as we build out our West O'ahu coverage.</p><div class="area-info"><div class="area-info-chip">📅 Trash day: Verify at opala.hnl.info</div><div class="area-info-chip">🏙️ O'ahu's second city</div><div class="area-info-chip">📍 West O'ahu</div></div></div><div><div style="background:var(--navy);border-radius:var(--rl);padding:2rem;color:white"><h3 style="font-family:'Oswald',sans-serif;font-size:1.35rem;font-weight:700;margin-bottom:.75rem">Join the Kapolei Launch List</h3><p style="font-size:.9rem;color:rgba(255,255,255,.7);line-height:1.7;margin-bottom:1.5rem">Be first in Kapolei and lock in your founding rate.</p><button class="btn btn-primary" style="width:100%;justify-content:center" onclick="window.open('https://hawaiibincleaning.com/founding-member','_blank')">🌺 Join the Launch List</button></div></div></div></div></section>
-  <section class="cta-sec"><div class="container cta-in"><h2>Ready for Clean Bins in Kapolei?</h2><button class="btn btn-white" onclick="window.open('https://hawaiibincleaning.com/founding-member','_blank')">🌺 Join the Launch List</button></div></section>
-</div>
-
-<!-- Makakilo -->
-<div id="page-area-makakilo" class="page">
-  <div style="background:var(--navy);padding:4rem 0 3rem;color:white"><div class="container"><span class="sec-label">Service Area</span><h1 style="font-family:'Oswald',sans-serif;font-size:clamp(2rem,5vw,3.25rem);font-weight:700;color:white;margin-bottom:.75rem">Bin Cleaning in Makakilo, O'ahu</h1><p style="color:rgba(255,255,255,.72);max-width:560px;line-height:1.75">Hillside community bin cleaning for Makakilo homeowners.</p></div></div>
-  <div class="wave" style="background:var(--navy)"><svg viewBox="0 0 1440 50" preserveAspectRatio="none" height="50" width="100%"><path d="M0,0 C480,60 960,0 1440,40 L1440,50 L0,50Z" fill="#F5F0E8"/></svg></div>
-  <section class="sec sec-alt" style="padding-top:2.5rem"><div class="container"><div class="g2" style="align-items:start;gap:3rem"><div><span class="sec-label">Makakilo</span><h2 class="sec-title">Serving Makakilo</h2><p style="font-size:.9375rem;color:var(--gray);line-height:1.85;margin-bottom:1.25rem">Makakilo's hillside homes offer stunning views and a tight-knit community. As part of our West O'ahu expansion, we'll serve Makakilo residents with the same professional standard we bring to every neighborhood — complete cleaning, zero discharge, and a service that works around your collection schedule.</p><div class="area-info"><div class="area-info-chip">📅 Trash day: Verify at opala.hnl.info</div><div class="area-info-chip">🏔️ Hillside community</div><div class="area-info-chip">📍 West O'ahu</div></div></div><div><div style="background:var(--navy);border-radius:var(--rl);padding:2rem;color:white"><h3 style="font-family:'Oswald',sans-serif;font-size:1.35rem;font-weight:700;margin-bottom:.75rem">Join the Makakilo Launch List</h3><button class="btn btn-primary" style="width:100%;justify-content:center" onclick="window.open('https://hawaiibincleaning.com/founding-member','_blank')">🌺 Join the Launch List</button></div></div></div></div></section>
-  <section class="cta-sec"><div class="container cta-in"><h2>Ready for Clean Bins in Makakilo?</h2><button class="btn btn-white" onclick="window.open('https://hawaiibincleaning.com/founding-member','_blank')">🌺 Join the Launch List</button></div></section>
-</div>
-
-<!-- Waipahu -->
-<div id="page-area-waipahu" class="page">
-  <div style="background:var(--navy);padding:4rem 0 3rem;color:white"><div class="container"><span class="sec-label">Service Area</span><h1 style="font-family:'Oswald',sans-serif;font-size:clamp(2rem,5vw,3.25rem);font-weight:700;color:white;margin-bottom:.75rem">Bin Cleaning in Waipahu, O'ahu</h1><p style="color:rgba(255,255,255,.72);max-width:560px;line-height:1.75">Serving Waipahu's diverse residential communities with professional bin cleaning.</p></div></div>
-  <div class="wave" style="background:var(--navy)"><svg viewBox="0 0 1440 50" preserveAspectRatio="none" height="50" width="100%"><path d="M0,0 C480,60 960,0 1440,40 L1440,50 L0,50Z" fill="#F5F0E8"/></svg></div>
-  <section class="sec sec-alt" style="padding-top:2.5rem"><div class="container"><div class="g2" style="align-items:start;gap:3rem"><div><span class="sec-label">Waipahu</span><h2 class="sec-title">Serving Waipahu</h2><p style="font-size:.9375rem;color:var(--gray);line-height:1.85;margin-bottom:1.25rem">Waipahu is a vibrant, diverse community with a strong sense of local identity. With a mix of established neighborhoods and newer residential developments, it's an ideal area for our professional bin cleaning service. We'll serve Waipahu as part of our initial launch phase in West O'ahu.</p><div class="area-info"><div class="area-info-chip">📅 Trash day: Verify at opala.hnl.info</div><div class="area-info-chip">🏠 Mixed residential</div><div class="area-info-chip">📍 West O'ahu</div></div></div><div><div style="background:var(--navy);border-radius:var(--rl);padding:2rem;color:white"><h3 style="font-family:'Oswald',sans-serif;font-size:1.35rem;font-weight:700;margin-bottom:.75rem">Join the Waipahu Launch List</h3><button class="btn btn-primary" style="width:100%;justify-content:center" onclick="window.open('https://hawaiibincleaning.com/founding-member','_blank')">🌺 Join the Launch List</button></div></div></div></div></section>
-  <section class="cta-sec"><div class="container cta-in"><h2>Ready for Clean Bins in Waipahu?</h2><button class="btn btn-white" onclick="window.open('https://hawaiibincleaning.com/founding-member','_blank')">🌺 Join the Launch List</button></div></section>
-</div>
-
-<!-- Halawa -->
-<div id="page-area-halawa" class="page">
-  <div style="background:var(--navy);padding:4rem 0 3rem;color:white"><div class="container"><span class="sec-label">Service Area</span><h1 style="font-family:'Oswald',sans-serif;font-size:clamp(2rem,5vw,3.25rem);font-weight:700;color:white;margin-bottom:.75rem">Bin Cleaning in Halawa, O'ahu</h1><p style="color:rgba(255,255,255,.72);max-width:560px;line-height:1.75">Serving Halawa and Moanalua with professional bin cleaning.</p></div></div>
-  <div class="wave" style="background:var(--navy)"><svg viewBox="0 0 1440 50" preserveAspectRatio="none" height="50" width="100%"><path d="M0,0 C480,60 960,0 1440,40 L1440,50 L0,50Z" fill="#F5F0E8"/></svg></div>
-  <section class="sec sec-alt" style="padding-top:2.5rem"><div class="container"><div class="g2" style="align-items:start;gap:3rem"><div><span class="sec-label">Halawa</span><h2 class="sec-title">Serving Halawa &amp; Moanalua</h2><p style="font-size:.9375rem;color:var(--gray);line-height:1.85;margin-bottom:1.25rem">Halawa and Moanalua sit at the gateway between Honolulu and the rest of O'ahu, sharing Wednesday trash collection with Pearl City and Aiea. Our route efficiency through this corridor allows us to provide the same high-quality service at competitive pricing.</p><div class="area-info"><div class="area-info-chip">📅 Trash day: Wednesday</div><div class="area-info-chip">🏠 Residential neighborhoods</div><div class="area-info-chip">📍 Central O'ahu</div></div></div><div><div style="background:var(--navy);border-radius:var(--rl);padding:2rem;color:white"><h3 style="font-family:'Oswald',sans-serif;font-size:1.35rem;font-weight:700;margin-bottom:.75rem">Join the Halawa Launch List</h3><button class="btn btn-primary" style="width:100%;justify-content:center" onclick="window.open('https://hawaiibincleaning.com/founding-member','_blank')">🌺 Join the Launch List</button></div></div></div></div></section>
-  <section class="cta-sec"><div class="container cta-in"><h2>Ready for Clean Bins in Halawa?</h2><button class="btn btn-white" onclick="window.open('https://hawaiibincleaning.com/founding-member','_blank')">🌺 Join the Launch List</button></div></section>
-</div>
-
-<!-- Kailua (Coming Soon) -->
-<div id="page-area-kailua" class="page">
-  <div style="background:var(--navy);padding:4rem 0 3rem;color:white"><div class="container"><span class="sec-label">Coming Soon</span><h1 style="font-family:'Oswald',sans-serif;font-size:clamp(2rem,5vw,3.25rem);font-weight:700;color:white;margin-bottom:.75rem">Bin Cleaning in Kailua — Coming Q2 2026</h1><p style="color:rgba(255,255,255,.72);max-width:560px;line-height:1.75">We're expanding to Kailua in Q2 2026. Join the waitlist now.</p></div></div>
-  <section class="sec"><div class="container center"><h2 class="sec-title">Kailua Is on Our Roadmap</h2><p class="sec-sub" style="margin-left:auto;margin-right:auto">We'll be expanding to Kailua and the Windward side in Q2 2026. Join the launch list now and we'll reach out when we're ready to launch in your neighborhood.</p><button class="btn btn-primary" onclick="window.open('https://hawaiibincleaning.com/founding-member','_blank')">🌺 Join the Kailua Waitlist</button></div></section>
-  <section class="cta-sec"><div class="container cta-in"><h2>Get Notified When We Launch in Kailua</h2><button class="btn btn-white" onclick="window.open('https://hawaiibincleaning.com/founding-member','_blank')">🌺 Join the Waitlist</button></div></section>
-</div>
-
-<!-- Kaneohe (Coming Soon) -->
-<div id="page-area-kaneohe" class="page">
-  <div style="background:var(--navy);padding:4rem 0 3rem;color:white"><div class="container"><span class="sec-label">Coming Soon</span><h1 style="font-family:'Oswald',sans-serif;font-size:clamp(2rem,5vw,3.25rem);font-weight:700;color:white;margin-bottom:.75rem">Bin Cleaning in Kāne'ohe — Coming Q2 2026</h1><p style="color:rgba(255,255,255,.72);max-width:560px;line-height:1.75">Expanding to Kāne'ohe and the Windward coast in Q2 2026.</p></div></div>
-  <section class="sec"><div class="container center"><h2 class="sec-title">Kāne'ohe Is on Our Roadmap</h2><p class="sec-sub" style="margin-left:auto;margin-right:auto">We'll be expanding to Kāne'ohe in Q2 2026. Join now and be first in line.</p><button class="btn btn-primary" onclick="window.open('https://hawaiibincleaning.com/founding-member','_blank')">🌺 Join the Kāne'ohe Waitlist</button></div></section>
-  <section class="cta-sec"><div class="container cta-in"><h2>Get Notified When We Launch in Kāne'ohe</h2><button class="btn btn-white" onclick="window.open('https://hawaiibincleaning.com/founding-member','_blank')">🌺 Join the Waitlist</button></div></section>
-</div>
-
-<!-- ==================== TOS ==================== -->
-<div id="page-tos" class="page" style="padding-top:66px">
-  <div class="legal">
-    <h1>Terms of Service</h1>
-    <div class="legal-date">Last updated: January 1, 2026</div>
-    <p>Please read these Terms of Service carefully before using the services offered by Hawaii Bin Cleaning LLC ("Company," "we," "us"). By scheduling any service, you agree to be bound by these terms.</p>
-    <h2>1. Services</h2><p>Hawaii Bin Cleaning provides residential trash bin cleaning, sanitizing, and deodorizing services on O'ahu. We clean bins after they have been emptied by the City &amp; County of Honolulu on your designated collection day.</p>
-    <h2>2. Scheduling &amp; Access</h2><p>You agree to place bins at the curb on your scheduled collection day. We are not responsible for missed cleanings if bins are not accessible.</p>
-    <h2>3. Payment &amp; Billing</h2><p>Subscription services are billed automatically on a recurring basis. Rates are subject to change with 30 days' notice.</p>
-    <h2>4. Cancellation</h2><p>You may cancel anytime through your customer portal with no cancellation fee. Cancellations take effect at the end of the current billing period.</p>
-    <h2>5. Environmental Compliance</h2><p>We operate in full compliance with all City &amp; County of Honolulu and State of Hawaiʻi environmental regulations. All greywater is transported to approved facilities.</p>
-    <h2>6. Contact</h2><p>Questions? Email <a href="mailto:aloha@hawaiibincleaning.com" style="color:var(--green)">aloha@hawaiibincleaning.com</a></p>
-  </div>
-</div>
-
-<!-- ==================== PRIVACY ==================== -->
-<div id="page-privacy" class="page" style="padding-top:66px">
-  <div class="legal">
-    <h1>Privacy Policy</h1>
-    <div class="legal-date">Last updated: January 1, 2026</div>
-    <p>Hawaii Bin Cleaning LLC respects your privacy. This policy explains what information we collect, how we use it, and your rights.</p>
-    <h2>1. Information We Collect</h2><ul><li>Name, email, phone, service address</li><li>Payment information (processed securely by our payment provider)</li><li>Service preferences and bin details</li><li>Standard website analytics data</li></ul>
-    <h2>2. How We Use Your Information</h2><ul><li>Provide and manage your bin cleaning service</li><li>Process payments and send receipts</li><li>Send service updates and notifications</li><li>Improve our operations</li><li>Marketing communications (opt-out anytime)</li></ul>
-    <h2>3. Data Sharing</h2><p>We do not sell your personal information. We share data only with trusted third-party service providers necessary to operate our business.</p>
-    <h2>4. Your Rights</h2><p>You may access, correct, or delete your data at any time. Email <a href="mailto:privacy@hawaiibincleaning.com" style="color:var(--green)">privacy@hawaiibincleaning.com</a> to exercise your rights.</p>
-    <h2>5. Security</h2><p>We use industry-standard security measures. Payment info is processed through PCI-compliant providers and never stored on our servers.</p>
-    <h2>6. Contact</h2><p><a href="mailto:privacy@hawaiibincleaning.com" style="color:var(--green)">privacy@hawaiibincleaning.com</a></p>
-  </div>
-</div>
-
-<!-- ==================== FOOTER ==================== -->
-<footer>
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <div class="fn">HAWAII BIN CLEANING</div>
-        <div class="fs">Cleaner Bins. Cleaner Homes.<br>Cleaner Hawaiʻi. 🌺</div>
-        <div style="font-size:.8125rem;color:rgba(255,255,255,.4);line-height:1.6">👨‍👩‍👧 Local. Family-owned.<br>Committed to our community.<br><br>📧 aloha@hawaiibincleaning.com<br>🌐 hawaiibincleaning.com</div>
-      </div>
-      <div class="footer-col">
-        <h4>Company</h4>
-        <ul>
-          <li><button onclick="nav('about')">About Us</button></li>
-          <li><button onclick="nav('blog')">Blog</button></li>
-          <li><a href="mailto:aloha@hawaiibincleaning.com">Contact</a></li>
-          <li><button onclick="window.open('https://hawaiibincleaning.com/founding-member','_blank')">Join the Launch List</button></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Services</h4>
-        <ul>
-          <li><button onclick="nav('services')">Bin Deep Clean</button></li>
-          <li><button onclick="nav('services')">Sanitizing</button></li>
-          <li><button onclick="nav('services')">Deodorizing</button></li>
-          <li><button onclick="nav('services')">Pressure Washing</button></li>
-          <li><button onclick="nav('services')">Our Equipment</button></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Service Areas</h4>
-        <ul>
-          <li><button onclick="nav('area-pearl-city')">Pearl City</button></li>
-          <li><button onclick="nav('area-mililani')">Mililani</button></li>
-          <li><button onclick="nav('area-hoopili')">Ho'opili</button></li>
-          <li><button onclick="nav('area-ewa-beach')">Ewa Beach</button></li>
-          <li><button onclick="nav('area-kapolei')">Kapolei</button></li>
-          <li><button onclick="nav('home')">View all areas →</button></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bot">
-      <div>© 2026 Hawaii Bin Cleaning LLC. All rights reserved. Local. Family-owned. Committed to our community.</div>
-      <div style="display:flex;gap:1.25rem">
-        <button onclick="nav('tos')" style="background:none;border:none;cursor:pointer;font-family:'Nunito',sans-serif;font-size:.8rem;color:rgba(255,255,255,.38)">Terms of Service</button>
-        <button onclick="nav('privacy')" style="background:none;border:none;cursor:pointer;font-family:'Nunito',sans-serif;font-size:.8rem;color:rgba(255,255,255,.38)">Privacy Policy</button>
-      </div>
-    </div>
-  </div>
-</footer>
-
-</div><!-- end #site -->
-
-<script>
-// ============================
-// LOADER
-// ============================
-const LR = 110;
-const LC = 2*Math.PI*LR; // ~690.8
-const LD = 3400;
-const LMSGS = [
-  {at:0,  t:'Starting up...'},
-  {at:8,  t:'Warming up the pressure washer...'},
-  {at:18, t:'Loading service areas...'},
-  {at:30, t:'Hooking up the dual bin grabber...'},
-  {at:45, t:'Preparing eco-friendly cleaning solution...'},
-  {at:60, t:'High-pressure nozzles ready...'},
-  {at:72, t:'Capturing greywater for safe disposal...'},
-  {at:85, t:'Almost squeaky clean...'},
-  {at:95, t:'Final rinse and deodorize...'},
-  {at:100,t:"Your bins are spotless! 🌺"},
-];
-let lraf,lstartTs,llastPct=-1,lmsgIdx=0;
-
-// Build stars
-(function(){
-  const c=document.getElementById('ldStars');
-  for(let i=0;i<55;i++){
-    const s=document.createElement('div');
-    s.className='ld-star';
-    s.style.cssText=`width:${1+Math.random()*2}px;height:${1+Math.random()*2}px;left:${Math.random()*100}%;top:${Math.random()*100}%;--op:${.2+Math.random()*.35};--d:${2+Math.random()*4}s;--dl:${Math.random()*4}s`;
-    c.appendChild(s);
-  }
-})();
-
-function lEase(t){return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2}
-
-function lAnimate(ts){
-  if(!lstartTs)lstartTs=ts;
-  const raw=Math.min((ts-lstartTs)/LD,1);
-  const e=lEase(raw);
-  const pct=Math.round(e*100);
-  if(pct!==llastPct){
-    llastPct=pct;
-    // Arc
-    const arc=document.getElementById('ldArc');
-    arc.style.strokeDashoffset=LC-e*LC;
-    // Dot
-    const dot=document.getElementById('ldDot');
-    const ang=(e*360-90)*Math.PI/180;
-    dot.setAttribute('cx',125+LR*Math.cos(ang));
-    dot.setAttribute('cy',125+LR*Math.sin(ang));
-    dot.style.opacity=pct>2?'1':'0';
-    // Color shift
-    if(pct>=95){arc.style.stroke='#F5C518';dot.style.fill='#F5C518';dot.setAttribute('r','7')}
-    // Pct text
-    document.getElementById('ldPct').innerHTML=pct+'<em>%</em>';
-    // Message
-    for(let i=LMSGS.length-1;i>=0;i--){
-      if(pct>=LMSGS[i].at&&lmsgIdx!==i){
-        lmsgIdx=i;
-        const m=document.getElementById('ldMsg');
-        m.classList.add('h');
-        setTimeout(()=>{m.textContent=LMSGS[i].t;m.classList.remove('h')},200);
-        break;
-      }
-    }
-    // Orbit
-    if(pct>=35){document.getElementById('ldOrbit').classList.add('vis');document.getElementById('ldOrbit').style.animationDuration=Math.max(1.2,4-pct/35)+'s'}
-  }
-  if(raw<1){lraf=requestAnimationFrame(lAnimate)}
-  else{lOnDone()}
-}
-
-function lOnDone(){
-  document.getElementById('ldPct').innerHTML='100<em>%</em>';
-  document.getElementById('ldArc').style.strokeDashoffset=0;
-  lBurst();
-  setTimeout(()=>{
-    document.getElementById('loader').classList.add('out');
-    document.getElementById('site').classList.add('visible');
-    // Init scroll observer after site visible
-    setTimeout(initReveal,100);
-  },900);
-  setTimeout(()=>document.getElementById('ld-replay').style.display='block',400);
-}
-
-function lBurst(){
-  const ring=document.getElementById('ldRing');
-  const cols=['#4CAF50','#F5C518','#0D7B8A','#FF8FA3','#FFFDE7','#4CAF50'];
-  for(let i=0;i<16;i++){
-    const p=document.createElement('div');
-    p.className='ld-particle';
-    const ang=(i/16)*360,rad=ang*Math.PI/180,dist=95+Math.random()*45;
-    const sz=4+Math.random()*8;
-    p.style.cssText=`width:${sz}px;height:${sz}px;background:${cols[i%cols.length]};left:calc(50% - ${sz/2}px);top:calc(50% - ${sz/2}px);--tx:${Math.cos(rad)*dist}px;--ty:${Math.sin(rad)*dist}px;animation-duration:${.5+Math.random()*.4}s;animation-delay:${Math.random()*.15}s`;
-    ring.appendChild(p);
-    setTimeout(()=>p.remove(),900);
-  }
-}
-
-function ldRestart(){
-  cancelAnimationFrame(lraf);
-  lstartTs=null;llastPct=-1;lmsgIdx=0;
-  const arc=document.getElementById('ldArc');
-  arc.style.strokeDashoffset=LC;arc.style.stroke='url(#ag)';
-  const dot=document.getElementById('ldDot');
-  dot.style.opacity='0';dot.setAttribute('r','5');dot.style.fill='#4CAF50';
-  document.getElementById('ldOrbit').classList.remove('vis');
-  document.getElementById('ldPct').innerHTML='0<em>%</em>';
-  const m=document.getElementById('ldMsg');
-  m.textContent='Starting up...';m.classList.remove('h');
-  document.getElementById('ld-replay').style.display='none';
-  document.getElementById('loader').classList.remove('out');
-  document.getElementById('site').classList.remove('visible');
-  setTimeout(()=>{lraf=requestAnimationFrame(lAnimate)},300);
-}
-
-window.addEventListener('load',()=>setTimeout(()=>{lraf=requestAnimationFrame(lAnimate)},300));
-
-// ============================
-// SCROLL REVEAL
-// ============================
-function initReveal(){
-  const obs=new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)}});
-  },{threshold:.12,rootMargin:'0px 0px -40px 0px'});
-  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-}
-
-// ============================
-// PAGE NAVIGATION
-// ============================
-function nav(page){
-  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  const t=document.getElementById('page-'+page);
-  if(t){t.classList.add('active');window.scrollTo({top:0,behavior:'smooth'});}
-  // Re-trigger reveal for new page
-  setTimeout(()=>{
-    const obs=new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)}});
-    },{threshold:.12,rootMargin:'0px 0px -40px 0px'});
-    document.querySelectorAll('#page-'+page+' .reveal:not(.in)').forEach(el=>obs.observe(el));
-  },50);
-}
-
-// ============================
-// MOBILE MENU
-// ============================
-function toggleMob(){document.getElementById('mobMenu').classList.toggle('open')}
-function closeMob(){document.getElementById('mobMenu').classList.remove('open')}
-function toggleMobSub(id){document.getElementById(id).classList.toggle('open')}
-document.addEventListener('click',e=>{
-  const menu=document.getElementById('mobMenu');
-  const btn=document.getElementById('hmbgr');
-  if(!menu.contains(e.target)&&!btn.contains(e.target))closeMob();
-});
-
-// ============================
-// FAQ
-// ============================
-function toggleFaq(btn){btn.parentElement.classList.toggle('open')}
-
-// ============================
-// SCROLL NAV SHADOW
-// ============================
-window.addEventListener('scroll',()=>{
-  document.getElementById('navbar').style.boxShadow=window.scrollY>20?'0 2px 30px rgba(0,0,0,.35)':'0 2px 20px rgba(0,0,0,.25)';
-});
-</script>
+  </main>
+  <div id="site-footer"></div>
 </body>
 </html>
