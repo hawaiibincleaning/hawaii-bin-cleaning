@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Founders Discount | Hawaii Bin Cleaning</title>
+  <meta name="description" content="Join the Hawaii Bin Cleaning founders discount list and get launch updates for professional truck-mounted bin cleaning on Oʻahu.">
+  <link rel="canonical" href="https://hawaiibincleaning.com/founders-discount">
+  <meta property="og:site_name" content="Hawaii Bin Cleaning">
+  <meta property="og:title" content="Founders Discount | Hawaii Bin Cleaning">
+  <meta property="og:description" content="Join the Hawaii Bin Cleaning founders discount list and get launch updates for professional truck-mounted bin cleaning on Oʻahu.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://hawaiibincleaning.com/founders-discount">
+  <meta property="og:image" content="https://hawaiibincleaning.com/assets/images/hbc-truck-transparent.png">
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script defer src="assets/js/site-config.js"></script>
+  <script defer src="assets/js/main.js"></script>
+</head>
+<body data-page="founders">
+  <a href="#main" class="skip-link">Skip to content</a>
+  <div id="site-header"></div>
+  <main id="main">
+
+    <section class="page-hero">
+      <div class="container">
+        <div>
+          <span class="eyebrow">Founders discount</span>
+          <h1>Reserve your spot before routes open.</h1>
+          <p class="lede max-narrow">Join the Hawaii Bin Cleaning launch list for early updates, first-route availability, and access to founder pricing when service opens in your neighborhood.</p>
+          <div class="btn-row mt-24">
+            <a class="btn btn-primary" href="#founders-form">Fill Out Native Form</a>
+            <a class="btn btn-secondary" href="/services">View Services</a>
+          </div>
+        </div>
+        <img class="mascot" src="assets/images/hbc-truck-transparent.png" alt="Hawaii Bin Cleaning truck with two bin lifters">
+      </div>
+    </section>
+
+    <section class="section" id="founders-form">
+      <div class="container split">
+        <div>
+          <span class="eyebrow">Launch interest form</span>
+          <h2>A native form that saves to your Google Sheet.</h2>
+          <p class="lede">Customers fill this out directly on hawaiibincleaning.com/founders-discount. Once the included Google Apps Script endpoint is deployed, every submission is written to your connected Google Sheet.</p>
+          <ul class="list-check">
+            <li>Residential trash, recycling, and green waste bin cleaning interest.</li>
+            <li>Neighborhood routing details so you can see where demand is building.</li>
+            <li>Founder discount, service frequency, and add-on interest captured in one place.</li>
+            <li>No Google Form embed on the customer page.</li>
+          </ul>
+          <div class="notice mt-24">
+            <span>🌊</span>
+            <p><strong>Owner setup needed before launch:</strong> deploy the included Google Apps Script file, then paste the Web App URL into <code>assets/js/site-config.js</code>.</p>
+          </div>
+        </div>
+
+        <form class="form-card" action="" method="post" data-native-sheet-form>
+          <input type="hidden" name="submitted_at" value="">
+          <input type="hidden" name="submission_page" value="Founders Discount">
+          <input type="hidden" name="submission_url" value="https://hawaiibincleaning.com/founders-discount">
+          <input type="text" name="company" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+          <div class="form-grid two">
+            <label>First name<input name="first_name" autocomplete="given-name" required></label>
+            <label>Last name<input name="last_name" autocomplete="family-name" required></label>
+          </div>
+          <div class="form-grid two mt-24">
+            <label>Email<input type="email" name="email" autocomplete="email" required></label>
+            <label>Phone<input type="tel" name="phone" autocomplete="tel" placeholder="(808) 555-0123" required></label>
+          </div>
+          <div class="form-grid mt-24">
+            <label>Service address<input name="address" autocomplete="street-address" placeholder="Street address" required></label>
+          </div>
+          <div class="form-grid two mt-24">
+            <label>City / Neighborhood<input name="city_neighborhood" placeholder="Kapolei, Mililani, Kailua, etc." required></label>
+            <label>ZIP code<input name="zip" inputmode="numeric" autocomplete="postal-code" placeholder="967xx" required></label>
+          </div>
+          <div class="form-grid two mt-24">
+            <label>Property type<select name="property_type" required>
+              <option value="">Select one</option>
+              <option>Single-family home</option>
+              <option>Townhome</option>
+              <option>Condo / apartment</option>
+              <option>HOA / association</option>
+              <option>Business / commercial</option>
+              <option>Other</option>
+            </select></label>
+            <label>How many bins?<select name="bin_count" required>
+              <option value="">Select one</option>
+              <option>1 bin</option>
+              <option>2 bins</option>
+              <option>3 bins</option>
+              <option>4+ bins</option>
+              <option>Not sure yet</option>
+            </select></label>
+          </div>
+          <div class="form-grid two mt-24">
+            <label>Preferred service frequency<select name="service_frequency" required>
+              <option value="">Select one</option>
+              <option>Monthly bin cleaning</option>
+              <option>Quarterly bin cleaning</option>
+              <option>One-time cleaning</option>
+              <option>Commercial / HOA service</option>
+              <option>Not sure yet</option>
+            </select></label>
+            <label>Trash pickup day<select name="pickup_day">
+              <option>Not sure</option>
+              <option>Monday</option><option>Tuesday</option><option>Wednesday</option><option>Thursday</option><option>Friday</option><option>Saturday</option><option>Sunday</option>
+            </select></label>
+          </div>
+          <fieldset class="mt-24">
+            <legend>Which bins are you interested in?</legend>
+            <div class="checkbox-grid">
+              <label class="checkbox-card"><input type="checkbox" name="bin_type" value="Trash bin" checked> Trash bin</label>
+              <label class="checkbox-card"><input type="checkbox" name="bin_type" value="Recycling bin"> Recycling bin</label>
+              <label class="checkbox-card"><input type="checkbox" name="bin_type" value="Green waste bin"> Green waste bin</label>
+              <label class="checkbox-card"><input type="checkbox" name="bin_type" value="Other / not sure"> Other / not sure</label>
+            </div>
+          </fieldset>
+          <fieldset class="mt-24">
+            <legend>Interested in any pressure washing add-ons?</legend>
+            <div class="checkbox-grid">
+              <label class="checkbox-card"><input type="checkbox" name="pressure_add_ons" value="Trash can pad"> Trash can pad</label>
+              <label class="checkbox-card"><input type="checkbox" name="pressure_add_ons" value="Sidewalk section"> Sidewalk section</label>
+              <label class="checkbox-card"><input type="checkbox" name="pressure_add_ons" value="Driveway"> Driveway</label>
+              <label class="checkbox-card"><input type="checkbox" name="pressure_add_ons" value="Not right now"> Not right now</label>
+            </div>
+          </fieldset>
+          <div class="form-grid two mt-24">
+            <label>HOA / community name, if applicable<input name="hoa_community" placeholder="Optional"></label>
+            <label>How did you hear about us?<select name="source">
+              <option>Door hanger</option>
+              <option>Instagram / social media</option>
+              <option>Neighbor or friend</option>
+              <option>Google search</option>
+              <option>Other</option>
+            </select></label>
+          </div>
+          <div class="form-grid mt-24">
+            <label>Notes<textarea name="message" placeholder="Tell us your neighborhood, how many bins you have, and any service questions."></textarea></label>
+            <label class="checkbox-card"><input type="checkbox" name="sms_consent" value="yes"> I agree to receive text messages about Hawaii Bin Cleaning launch updates and service availability. Message/data rates may apply.</label>
+            <label class="checkbox-card"><input type="checkbox" name="consent" value="yes" required> I agree to be contacted by Hawaii Bin Cleaning about launch updates, founders discount availability, and service information.</label>
+          </div>
+          <div class="form-actions mt-24">
+            <button class="btn btn-primary" type="submit">Join Founders List</button>
+            <a class="btn btn-secondary" href="/privacy">Privacy Policy</a>
+          </div>
+          <p class="form-note" data-form-status>Owner setup needed: paste your deployed Google Apps Script Web App URL in assets/js/site-config.js before this form can save to Google Sheets.</p>
+        </form>
+      </div>
+    </section>
+
+    <section class="section feature-strip">
+      <div class="container callout">
+        <div class="split">
+          <div>
+            <span class="eyebrow">Customer platform area</span>
+            <h2>Ready for Jobber or Jobatory.</h2>
+            <p>When you choose your customer platform, update <code>assets/js/site-config.js</code> with your booking and portal links. The header, footer, service page, and founders discount buttons will automatically point customers to the correct place.</p>
+          </div>
+          <div class="embed-placeholder">
+            <strong>Integration placeholder</strong>
+            <code>&lt;!-- Paste a Jobber / Jobatory embed script here or replace bookingUrl and customerPortalUrl in assets/js/site-config.js. --&gt;</code>
+            <div class="btn-row mt-24">
+              <a class="btn btn-primary" data-platform-link="quote" href="/founders-discount">Request Service</a>
+              <a class="btn btn-secondary" data-platform-link="portal" href="#customer-portal">Manage Service</a>
+            </div>
+          </div>
+        </div>
+
+        <details class="owner-tools">
+          <summary>Owner setup links</summary>
+          <div class="owner-tools-body">
+            <p class="form-note">These links are included for setup convenience. Remove this details block before public launch if you do not want visitors to access owner-only resources.</p>
+            <ul class="footer-links">
+              <li><a data-google-sheet-link href="https://docs.google.com/spreadsheets/d/1PyIezZ0dCBFFLdjuHTehYTDU4E-6sOVnyPfHPNwOkK4/edit?resourcekey=&gid=1318085782#gid=1318085782" target="_blank" rel="noopener">Connected Google Sheet</a></li>
+              <li><a data-google-form-edit-link href="https://docs.google.com/forms/u/1/d/1to0uoLZD0JB_d6blfTh9TdUxQcivxApMBmob0hI4K6c/edit?usp=forms_home&ouid=107997978444223972173&ths=true&pli=1" target="_blank" rel="noopener">Original Google Form editor</a></li>
+              <li><a href="/forms">Website forms page</a></li>
+            </ul>
+          </div>
+        </details>
+      </div>
+    </section>
+
+  </main>
+  <div id="site-footer"></div>
+</body>
+</html>
