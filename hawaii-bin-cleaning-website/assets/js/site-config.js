@@ -12,7 +12,7 @@ window.HBC_CONFIG = {
   googleFormEditUrl: "https://docs.google.com/forms/u/1/d/1to0uoLZD0JB_d6blfTh9TdUxQcivxApMBmob0hI4K6c/edit?usp=forms_home&ouid=107997978444223972173&ths=true&pli=1",
   // Paste the deployed Google Apps Script Web App URL here after following the README setup.
   // The native website form submits to this endpoint, which writes rows to the Google Sheet above.
-  googleAppsScriptEndpoint: "PASTE_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE",
+  googleAppsScriptEndpoint: "https://script.google.com/macros/s/AKfycbzPfmm78tclffCUePZKw2V7-jK0nRZBWAPD_-n74rcd88zI8HsVquJbZxgDpC_8S1bRkg/exec",
   // Optional backup only. The live customer page now uses a native website form instead of an embedded Google Form.
   googleFormPublicUrl: "https://docs.google.com/forms/d/1to0uoLZD0JB_d6blfTh9TdUxQcivxApMBmob0hI4K6c/viewform",
   // Replace these with live links from Jobber, Jobatory, Urable, or another booking platform.
