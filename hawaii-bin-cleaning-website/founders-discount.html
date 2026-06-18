@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -32,33 +33,16 @@
           <h1>Reserve your spot before routes open.</h1>
           <p class="lede max-narrow">Join the Hawaii Bin Cleaning launch list for early updates, first-route availability, and access to founder pricing when service opens in your neighborhood.</p>
           <div class="btn-row mt-24">
-            <a class="btn btn-primary" href="#founders-form">Fill Out Native Form</a>
+            <a class="btn btn-primary" href="#founders-form">Join the List</a>
             <a class="btn btn-secondary" href="/services">View Services</a>
           </div>
         </div>
-        <img class="mascot" src="assets/images/hbc-truck-transparent.png" alt="Hawaii Bin Cleaning truck with two bin lifters">
       </div>
     </section>
 
     <section class="section" id="founders-form">
-      <div class="container split">
-        <div>
-          <span class="eyebrow">Launch interest form</span>
-          <h2>Join the founding member interest list.</h2>
-          <p class="lede">This native website form mirrors your Google Form fields and sends submissions to your connected Google Sheet after the Apps Script endpoint is deployed.</p>
-          <ul class="list-check">
-            <li>Collects name, email, phone, ZIP code, bin count, and service interest.</li>
-            <li>Matches the required and optional fields from your original Google Form.</li>
-            <li>Helps you identify which Oʻahu neighborhoods are most ready for launch.</li>
-            <li>No Google Form embed on the customer page.</li>
-          </ul>
-          <div class="notice mt-24">
-            <span>🌊</span>
-            <p><strong>Owner setup needed before launch:</strong> deploy the included Google Apps Script file, then paste the Web App URL into <code>assets/js/site-config.js</code>.</p>
-          </div>
-        </div>
-
-        <form class="form-card" action="" method="post" data-native-sheet-form>
+      <div class="container form-section-centered">
+        <form class="form-card founders-form-wide" action="" method="post" data-native-sheet-form>
           <input type="hidden" name="submitted_at" value="">
           <input type="hidden" name="submission_page" value="Founding Member Interest List">
           <input type="hidden" name="submission_url" value="https://hawaiibincleaning.com/founders-discount">
@@ -146,38 +130,6 @@
           </div>
           <p class="form-note" data-form-status>Owner setup needed: paste your deployed Google Apps Script Web App URL in assets/js/site-config.js before this form can save to Google Sheets.</p>
         </form>
-      </div>
-    </section>
-
-    <section class="section feature-strip">
-      <div class="container callout">
-        <div class="split">
-          <div>
-            <span class="eyebrow">Customer platform area</span>
-            <h2>Ready for Jobber or Jobatory.</h2>
-            <p>When you choose your customer platform, update <code>assets/js/site-config.js</code> with your booking and portal links. The header, footer, service page, and founders discount buttons will automatically point customers to the correct place.</p>
-          </div>
-          <div class="embed-placeholder">
-            <strong>Integration placeholder</strong>
-            <code>&lt;!-- Paste a Jobber / Jobatory embed script here or replace bookingUrl and customerPortalUrl in assets/js/site-config.js. --&gt;</code>
-            <div class="btn-row mt-24">
-              <a class="btn btn-primary" data-platform-link="quote" href="/founders-discount">Request Service</a>
-              <a class="btn btn-secondary" data-platform-link="portal" href="#customer-portal">Manage Service</a>
-            </div>
-          </div>
-        </div>
-
-        <details class="owner-tools">
-          <summary>Owner setup links</summary>
-          <div class="owner-tools-body">
-            <p class="form-note">These links are included for setup convenience. Remove this details block before public launch if you do not want visitors to access owner-only resources.</p>
-            <ul class="footer-links">
-              <li><a data-google-sheet-link href="https://docs.google.com/spreadsheets/d/1PyIezZ0dCBFFLdjuHTehYTDU4E-6sOVnyPfHPNwOkK4/edit?resourcekey=&gid=1318085782#gid=1318085782" target="_blank" rel="noopener">Connected Google Sheet</a></li>
-              <li><a data-google-form-edit-link href="https://docs.google.com/forms/u/1/d/1to0uoLZD0JB_d6blfTh9TdUxQcivxApMBmob0hI4K6c/edit?usp=forms_home&ouid=107997978444223972173&ths=true&pli=1" target="_blank" rel="noopener">Original Google Form editor</a></li>
-              <li><a href="/forms">Website forms page</a></li>
-            </ul>
-          </div>
-        </details>
       </div>
     </section>
 
