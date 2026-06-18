@@ -26,17 +26,18 @@
   const headerMount = document.getElementById('site-header');
   if (headerMount) {
     headerMount.innerHTML = `
-      <div class="site-topbar">Coming soon on Oʻahu — join the founders discount list at hawaiibincleaning.com/founders-discount</div>
+      <div class="site-topbar"><a href="https://hawaiibincleaning.com/founders-discount">Coming soon on Oʻahu — join the founders discount list HERE</a></div>
       <header class="site-header" data-header>
         <div class="container header-inner">
           <a class="logo-link" href="/" aria-label="${cfg.businessName || 'Hawaii Bin Cleaning'} home">
-            <img src="assets/images/hbc-wordmark-transparent.png" alt="${cfg.businessName || 'Hawaii Bin Cleaning'} logo">
-            <span class="logo-text" aria-hidden="true"><span>Hawaii</span><span>Bin Cleaning</span></span>
+            <picture>
+              <source srcset="assets/images/hbc-logo-transparent.webp" type="image/webp">
+              <img src="assets/images/hbc-logo-transparent.png" alt="${cfg.businessName || 'Hawaii Bin Cleaning'} logo">
+            </picture>
           </a>
           <nav class="nav-links" aria-label="Main navigation">${navHtml()}</nav>
           <div class="header-actions">
-            <a class="btn btn-ghost btn-small" data-platform-link="portal" href="${customerLink('portal')}">Manage Service</a>
-            <a class="btn btn-primary btn-small" data-platform-link="book" href="${customerLink('book')}">Founders Discount</a>
+            <a class="btn btn-primary btn-small header-cta" data-platform-link="book" href="${customerLink('book')}">Founders Discount</a>
           </div>
           <button class="mobile-toggle" type="button" data-mobile-toggle aria-expanded="false">Menu</button>
         </div>
@@ -49,32 +50,24 @@
     footerMount.innerHTML = `
       <footer class="site-footer">
         <div class="container">
-          <div class="footer-grid">
+          <div class="footer-grid footer-grid-clean">
             <div>
-              <img class="footer-logo" src="assets/images/hbc-wordmark-transparent.png" alt="${cfg.businessName || 'Hawaii Bin Cleaning'} logo">
-              <p>${cfg.tagline || ''} A local, family-owned service for cleaner, fresher bins across ${cfg.serviceArea || 'Hawaiʻi'}.</p>
-              <a class="social-pill" href="#" aria-label="Instagram placeholder">${cfg.socialHandle || '@hawaiibincleaning'}</a>
+              <picture>
+                <source srcset="assets/images/hbc-logo-transparent.webp" type="image/webp">
+                <img class="footer-logo" src="assets/images/hbc-logo-transparent.png" alt="${cfg.businessName || 'Hawaii Bin Cleaning'} logo">
+              </picture>
+              <p>${cfg.tagline || ''} A local, family-owned service for cleaner, fresher bins.</p>
             </div>
             <div>
               <div class="footer-title">Explore</div>
               <ul class="footer-links">${navItems.map(item => `<li><a href="${item.href}">${item.label}</a></li>`).join('')}</ul>
             </div>
             <div>
-              <div class="footer-title">Service</div>
-              <ul class="footer-links">
-                <li><a href="/services#bin-cleaning">Bin Cleaning</a></li>
-                <li><a href="/services#pressure-washing">Add-On Washing</a></li>
-                <li><a data-platform-link="book" href="${customerLink('book')}">Founders Discount</a></li>
-                <li><a data-platform-link="portal" href="${customerLink('portal')}">Customer Portal</a></li>
-              </ul>
-            </div>
-            <div>
               <div class="footer-title">Contact</div>
               <ul class="footer-links">
                 <li><a href="${cfg.siteUrl || '/'}">${cfg.website || 'hawaiibincleaning.com'}</a></li>
-                <li>${cfg.email || ''}</li>
-                <li>${cfg.phone ? cfg.phone : 'Phone coming soon'}</li>
-                <li>${cfg.serviceArea || 'Oʻahu, Hawaiʻi'}</li>
+                <li><a href="mailto:${cfg.email || 'info@hawaiibincleaning.com'}">${cfg.email || 'info@hawaiibincleaning.com'}</a></li>
+                <li><a data-platform-link="book" href="${customerLink('book')}">Founders Discount</a></li>
               </ul>
             </div>
           </div>
@@ -143,7 +136,6 @@
       if (pageUrlField) pageUrlField.value = window.location.href;
 
       const data = new URLSearchParams(new FormData(form));
-      data.append('user_agent', navigator.userAgent || '');
       setSubmitState(submitButton, true);
       setFormStatus(form, 'Sending your founders discount request...', 'sending');
 
@@ -182,7 +174,7 @@
     }
   });
 
-  const revealItems = document.querySelectorAll('.hero-card, .truck-frame, .float-card, .page-hero .container > *, .section .card, .section .callout, .section .split > *, .section .form-card, .section .notice, .section .embed-placeholder, .section .faq-item');
+  const revealItems = document.querySelectorAll('.hero-card, .truck-frame, .float-card, .page-hero .container > *, .section .container > .eyebrow, .section .container > h2, .section .container > .lede, .section .card, .section .callout, .section .split > *, .section .form-card, .section .notice, .section .embed-placeholder, .section .faq-item');
   revealItems.forEach((el, index) => {
     el.classList.add('reveal');
     el.style.setProperty('--reveal-delay', `${Math.min(index % 6, 5) * 55}ms`);
