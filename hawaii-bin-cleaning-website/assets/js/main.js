@@ -3,6 +3,32 @@
   const current = document.body.getAttribute('data-page') || '';
   const navItems = (cfg.nav || []).filter(item => !item.hiddenFlag || cfg[item.hiddenFlag]);
 
+  const themeStorageKey = 'hbc-theme';
+
+  function preferredTheme() {
+    try {
+      const saved = window.localStorage.getItem(themeStorageKey);
+      if (saved === 'light' || saved === 'dark') return saved;
+    } catch (error) {
+      // Storage can be unavailable in privacy-restricted browsers.
+    }
+    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+
+  function applyTheme(theme) {
+    const activeTheme = theme === 'dark' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', activeTheme);
+    document.querySelectorAll('[data-theme-toggle]').forEach(button => {
+      const isDark = activeTheme === 'dark';
+      button.setAttribute('aria-pressed', String(isDark));
+      button.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+      button.setAttribute('title', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+      button.querySelector('[data-theme-icon]').textContent = isDark ? '☀️' : '🌙';
+    });
+  }
+
+  applyTheme(preferredTheme());
+
   function navHtml() {
     return navItems.map(item => {
       const active = item.key === current ? ' aria-current="page"' : '';
@@ -41,11 +67,13 @@
           </a>
           <nav class="nav-links" aria-label="Main navigation">${navHtml()}</nav>
           <div class="header-actions">
+            <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode" title="Switch to dark mode" aria-pressed="false"><span data-theme-icon aria-hidden="true">🌙</span></button>
             <a class="btn btn-primary btn-small header-cta" data-platform-link="book" href="${customerLink('book')}">Founders Discount</a>
           </div>
           <button class="mobile-toggle" type="button" data-mobile-toggle aria-expanded="false">Menu</button>
         </div>
       </header>`;
+    applyTheme(document.documentElement.getAttribute('data-theme'));
   }
 
   const footerMount = document.getElementById('site-footer');
@@ -268,6 +296,18 @@
   });
 
   document.addEventListener('click', (event) => {
+    const themeToggle = event.target.closest('[data-theme-toggle]');
+    if (themeToggle) {
+      const nextTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      applyTheme(nextTheme);
+      try {
+        window.localStorage.setItem(themeStorageKey, nextTheme);
+      } catch (error) {
+        // The visual toggle still works when storage is unavailable.
+      }
+      return;
+    }
+
     const toggle = event.target.closest('[data-mobile-toggle]');
     if (toggle) {
       const header = document.querySelector('[data-header]');
@@ -287,7 +327,7 @@
     }
   });
 
-  const revealItems = document.querySelectorAll('.hero-card, .truck-frame, .float-card, .page-hero .container > *, .section .container > .eyebrow, .section .container > h2, .section .container > .lede, .section .card, .section .callout, .section .split > *, .section .form-card, .section .notice, .section .embed-placeholder, .section .faq-item');
+  const revealItems = document.querySelectorAll('.hero-card, .truck-frame, .float-card, .home-hero-copy, .home-truck-stage, .comparison-copy, .comparison-card, .home-benefit-card, .benefit-tile, .home-process-list li, .home-cta-card, .page-hero .container > *, .section .container > .eyebrow, .section .container > h2, .section .container > .lede, .section .card, .section .callout, .section .split > *, .section .form-card, .section .notice, .section .embed-placeholder, .section .faq-item');
   revealItems.forEach((el, index) => {
     el.classList.add('reveal');
     el.style.setProperty('--reveal-delay', `${Math.min(index % 6, 5) * 55}ms`);
@@ -306,4 +346,21 @@
   } else {
     revealItems.forEach(el => el.classList.add('is-visible'));
   }
+
+  document.querySelectorAll('[data-comparison]').forEach(comparison => {
+    const range = comparison.querySelector('[data-comparison-range]');
+    const after = comparison.querySelector('[data-comparison-after]');
+    const handle = comparison.querySelector('[data-comparison-handle]');
+    if (!range || !after || !handle) return;
+
+    const updateComparison = () => {
+      const value = `${range.value}%`;
+      after.style.clipPath = `inset(0 ${100 - Number(range.value)}% 0 0)`;
+      handle.style.left = value;
+      range.setAttribute('aria-valuetext', `${range.value} percent clean image revealed`);
+    };
+
+    range.addEventListener('input', updateComparison);
+    updateComparison();
+  });
 })();

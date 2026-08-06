@@ -1,118 +1,157 @@
-<!-- VS Code connection test -->
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Hawaii Bin Cleaning | Cleaner Bins. Happier Homes.</title>
-  <link rel="canonical" href="https://hawaiibincleaning.com">
-  <meta name="description" content="Hawaii Bin Cleaning provides professional truck-mounted trash bin cleaning for Oʻahu homes. Join the launch list for founder updates.">
-  
+  <title>Trash Bin Cleaning on Oʻahu | Hawaii Bin Cleaning</title>
+  <link rel="canonical" href="https://hawaiibincleaning.com/">
+  <meta name="description" content="Professional trash bin cleaning on Oʻahu. Hawaii Bin Cleaning washes, sanitizes and deodorizes residential trash, recycling and green-waste bins curbside.">
+  <meta name="theme-color" content="#062a4f">
+
   <meta property="og:site_name" content="Hawaii Bin Cleaning">
-  <meta property="og:title" content="Hawaii Bin Cleaning | Cleaner Bins. Happier Homes.">
-  <meta property="og:description" content="Hawaii Bin Cleaning provides professional truck-mounted trash bin cleaning for Oʻahu homes. Join the launch list for founder updates.">
+  <meta property="og:title" content="Professional Trash Bin Cleaning on Oʻahu">
+  <meta property="og:description" content="A cleaner, fresher bin without the mess. Join the founders discount list for Hawaii Bin Cleaning on Oʻahu.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://hawaiibincleaning.com">
-  <meta property="og:image" content="https://hawaiibincleaning.com/assets/images/hbc-truck-transparent.png">
+  <meta property="og:url" content="https://hawaiibincleaning.com/">
+  <meta property="og:image" content="https://hawaiibincleaning.com/assets/images/hbc-truck-transparent.webp">
+  <meta name="twitter:card" content="summary_large_image">
+
   <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="preload" href="assets/images/hbc-truck-transparent.webp" as="image" type="image/webp">
   <link rel="stylesheet" href="assets/css/styles.css">
   <script defer src="assets/js/site-config.js"></script>
   <script defer src="assets/js/main.js"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Hawaii Bin Cleaning",
+    "url": "https://hawaiibincleaning.com/",
+    "email": "info@hawaiibincleaning.com",
+    "image": "https://hawaiibincleaning.com/assets/images/hbc-truck-transparent.webp",
+    "description": "Professional residential trash bin cleaning, sanitizing and deodorizing on Oʻahu.",
+    "areaServed": { "@type": "Place", "name": "Oʻahu, Hawaiʻi" },
+    "serviceType": ["Trash bin cleaning", "Garbage can cleaning", "Recycling bin cleaning"]
+  }
+  </script>
 </head>
-<body data-page="home">
+<body data-page="home" class="home-v2">
   <a href="#main" class="skip-link">Skip to content</a>
   <div id="site-header"></div>
+
   <main id="main">
-
-    <section class="hero">
-      <div class="container hero-grid">
-        <div class="hero-card">
-          <div class="hero-badge">Launch list <span>now open</span></div>
-          <h1>Cleaner Bins. <span class="script-line">Happier Homes.</span></h1>
-          <p class="lede">Professional truck-mounted trash bin cleaning for Oʻahu homes. We clean, sanitize, deodorize, and help keep dirty wastewater out of your driveway.</p>
-          <div class="btn-row mt-24">
-            <a class="btn btn-primary" data-platform-link="book" href="/founders-discount">Join the Launch List</a>
-            <a class="btn btn-secondary" href="/services">View Services</a>
+    <section class="home-hero" aria-labelledby="home-hero-title">
+      <div class="container home-hero-grid">
+        <div class="home-hero-copy">
+          <p class="home-kicker">Professional curbside service on Oʻahu</p>
+          <h1 id="home-hero-title"><span class="hero-title-line">Cleaner bins.</span><span class="hero-title-line hero-title-green">Healthier homes.</span></h1>
+          <p class="lede">Hawaii Bin Cleaning washes, sanitizes and deodorizes residential trash, recycling and green-waste bins—without leaving the dirty work in your driveway.</p>
+          <div class="btn-row home-hero-actions">
+            <a class="btn btn-primary" href="/founders-discount">Join the Founders List</a>
+            <a class="home-text-link" href="#before-after">See the difference <span aria-hidden="true">↓</span></a>
           </div>
         </div>
-        <div class="hero-visual" aria-label="Hawaii Bin Cleaning service truck illustration">
-          <div class="truck-frame">
-            <picture>
-              <source srcset="assets/images/hbc-truck-transparent.webp" type="image/webp">
-              <img src="assets/images/hbc-truck-transparent.png" alt="Cartoon Hawaii Bin Cleaning truck with two hydraulic bin lifters and ocean wave graphics">
-            </picture>
+
+        <div class="home-truck-stage" aria-label="Hawaii Bin Cleaning service truck">
+          <picture class="home-truck">
+            <source srcset="assets/images/hbc-truck-transparent.webp" type="image/webp">
+            <img src="assets/images/hbc-truck-transparent.png" width="900" height="600" fetchpriority="high" alt="Illustrated Hawaii Bin Cleaning truck with two hydraulic bin lifters">
+          </picture>
+          <div class="home-road" aria-hidden="true"></div>
+        </div>
+      </div>
+      <div class="ocean-divider" aria-hidden="true">
+        <svg viewBox="0 0 1440 120" preserveAspectRatio="none" role="presentation"><path d="M0 65C170 9 324 14 476 64s302 57 472 1 323-57 492-5v60H0Z" fill="#fff"/><path d="M0 42c178-45 326-34 480 12s307 48 473 2 326-48 487-7" fill="none" stroke="#73dcff" stroke-width="10" opacity=".8"/></svg>
+      </div>
+    </section>
+
+    <section class="section comparison-section" id="before-after" aria-labelledby="comparison-title">
+      <div class="container comparison-layout">
+        <div class="comparison-copy">
+          <span class="eyebrow">Before &amp; after</span>
+          <h2 id="comparison-title">See what a professional bin cleaning can do.</h2>
+          <p class="lede">Drag the slider to compare the same residential bin before and after cleaning.</p>
+          <p>Our curbside process is designed to break down grime, reduce odor-causing residue and leave your bins noticeably cleaner.</p>
+          <a class="btn btn-primary" href="/founders-discount">Get Founders Discount Updates</a>
+        </div>
+
+        <div class="comparison-card" data-comparison>
+          <div class="comparison-media">
+            <img class="comparison-image comparison-before" src="assets/images/before-after/dirty-trash-bin-cleaning-oahu.webp" width="1200" height="1048" loading="eager" decoding="async" alt="Dirty residential trash bin before professional cleaning on Oʻahu">
+            <div class="comparison-after-wrap" data-comparison-after>
+              <img class="comparison-image comparison-after" src="assets/images/before-after/clean-trash-bin-cleaning-oahu.webp" width="1200" height="1048" loading="eager" decoding="async" alt="Clean residential trash bin after Hawaii Bin Cleaning service">
+            </div>
+            <span class="comparison-label label-before">Before</span>
+            <span class="comparison-label label-after">After</span>
+            <div class="comparison-handle" data-comparison-handle aria-hidden="true"><span>↔</span></div>
+            <input class="comparison-range" data-comparison-range type="range" min="0" max="100" value="50" aria-label="Reveal clean bin image">
           </div>
+          <p class="comparison-hint">Drag to reveal the clean bin</p>
         </div>
       </div>
     </section>
 
-    <section class="section feature-strip">
-      <div class="container text-center max-narrow">
-        <span class="eyebrow">What we do</span>
-        <h2>Healthier Bins. <span class="green-highlight">Cleaner Hawaiʻi.</span></h2>
-        <p class="lede">A simple recurring service for trash, recycling, and green waste bins that are too dirty, smelly, or inconvenient to clean yourself.</p>
-      </div>
-      <div class="container grid grid-4 mt-36">
-        <article class="card">
-          <div class="icon-bubble blue">✨</div>
-          <h3>Deep Cleans & Sanitizes</h3>
-          <p>Removes grime, buildup, and unpleasant odors from the bins you touch every week.</p>
-        </article>
-        <article class="card">
-          <div class="icon-bubble green">🌿</div>
-          <h3>Eco-Friendly Process</h3>
-          <p>Designed around responsible cleaning, controlled runoff, and island-conscious operations.</p>
-        </article>
-        <article class="card">
-          <div class="icon-bubble orange">🦟</div>
-          <h3>Helps Deter Pests</h3>
-          <p>Cleaner bins are less attractive to flies, maggots, roaches, rodents, and other unwanted visitors.</p>
-        </article>
-        <article class="card">
-          <div class="icon-bubble blue">📅</div>
-          <h3>Convenient & Reliable</h3>
-          <p>Leave empty bins out after pickup and let us handle the dirty work curbside.</p>
-        </article>
+    <section class="section home-process" aria-labelledby="process-title">
+      <div class="container">
+        <div class="text-center max-narrow home-process-heading">
+          <span class="eyebrow">What we do &amp; how it works</span>
+          <h2 id="process-title">A deeper clean, right at your curb.</h2>
+          <p class="lede">Leave your empty bins out after collection. Our truck-mounted system handles the washing, sanitizing and dirty wastewater.</p>
+        </div>
+        <ol class="home-process-list">
+          <li>
+            <span class="process-step-number">1</span>
+            <span class="process-emoji" aria-hidden="true">🗑️</span>
+            <div><h3>Leave bins curbside</h3><p>Keep empty trash, recycling or green-waste bins out after your regular collection.</p></div>
+          </li>
+          <li>
+            <span class="process-step-number">2</span>
+            <span class="process-emoji" aria-hidden="true">💦</span>
+            <div><h3>We wash &amp; sanitize</h3><p>Our truck-mounted equipment lifts each bin and targets stuck-on grime and odor-causing residue.</p></div>
+          </li>
+          <li>
+            <span class="process-step-number">3</span>
+            <span class="process-emoji" aria-hidden="true">✨</span>
+            <div><h3>Enjoy cleaner bins</h3><p>We deodorize and return the bins ready to use while keeping the dirty cleaning water contained.</p></div>
+          </li>
+        </ol>
+        <div class="home-inline-link"><a href="/services">Explore our Oʻahu bin cleaning services <span aria-hidden="true">→</span></a></div>
       </div>
     </section>
 
-    <section class="section">
-      <div class="container split">
+    <section class="section home-benefits" aria-labelledby="benefits-title">
+      <div class="container home-section-heading">
         <div>
-          <span class="eyebrow">How it works</span>
-          <h2>From curbside to clean in three easy steps.</h2>
-          <p class="lede">Our goal is to make bin cleaning feel as normal and reliable as trash pickup.</p>
-          <ul class="list-check">
-            <li>Choose a recurring service option once launch scheduling opens.</li>
-            <li>Leave empty bins curbside on your service day after pickup.</li>
-            <li>Enjoy cleaner, fresher bins without dragging a hose through the driveway.</li>
-          </ul>
-          <div class="btn-row mt-24">
-            <a class="btn btn-primary" data-platform-link="book" href="/founders-discount">Reserve Founder Updates</a>
-            <a class="btn btn-ghost" href="/faq">Read FAQ</a>
-          </div>
+          <span class="eyebrow">Why clean your bins?</span>
+          <h2 id="benefits-title">Small service. Noticeable difference.</h2>
         </div>
-        <div class="grid process-grid">
-          <article class="card process-step">
-            <h3>Schedule</h3>
-            <p>Join the launch list now. When routes open, customers can book service in their neighborhood.</p>
-          </article>
-          <article class="card process-step">
-            <h3>Clean</h3>
-            <p>The truck-mounted unit lifts bins, washes the inside, and keeps the process contained and efficient.</p>
-          </article>
-          <article class="card process-step">
-            <h3>Deodorize</h3>
-            <p>Bins are deodorized after cleaning so your trash area smells fresher between pickups.</p>
-          </article>
-        </div>
+        <p class="lede">Routine professional cleaning helps make the space around your bins fresher, cleaner and more pleasant.</p>
+      </div>
+      <div class="container benefits-grid">
+        <article class="benefit-tile"><span aria-hidden="true">👃</span><div><h3>Reduce odors</h3><p>Remove odor-causing residue that remains after collection day.</p></div></article>
+        <article class="benefit-tile"><span aria-hidden="true">🏡</span><div><h3>Improve curb appeal</h3><p>Keep grimy, stained bins from detracting from a clean home exterior.</p></div></article>
+        <article class="benefit-tile"><span aria-hidden="true">🪰</span><div><h3>Deter bugs</h3><p>Reduce the food residue and buildup that can attract flies and other insects.</p></div></article>
+        <article class="benefit-tile"><span aria-hidden="true">🐀</span><div><h3>Discourage pests</h3><p>Cleaner bins are less inviting to rodents and other unwanted visitors.</p></div></article>
+        <article class="benefit-tile"><span aria-hidden="true">🧤</span><div><h3>Cleaner touchpoints</h3><p>Make lids, handles and the bins your family uses every week more pleasant to handle.</p></div></article>
+        <article class="benefit-tile"><span aria-hidden="true">💧</span><div><h3>Responsible wastewater</h3><p>Our contained process helps keep dirty wash water out of driveways and storm drains.</p></div></article>
       </div>
     </section>
 
+    <section class="section home-cta" aria-labelledby="home-cta-title">
+      <div class="container home-cta-card">
+        <div>
+          <span class="eyebrow">Coming soon on Oʻahu</span>
+          <h2 id="home-cta-title">Be first in line for cleaner bins.</h2>
+          <p>Join the Founding Member Interest List for launch news, route updates and founders discount details.</p>
+        </div>
+        <a class="btn btn-primary" href="/founders-discount">Join the Founders List</a>
+      </div>
+    </section>
   </main>
+
   <div id="site-footer"></div>
 </body>
 </html>
