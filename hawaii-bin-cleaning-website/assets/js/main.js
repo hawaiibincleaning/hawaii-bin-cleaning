@@ -23,6 +23,7 @@
       button.setAttribute('aria-pressed', String(isDark));
       button.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
       button.setAttribute('title', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+      button.querySelector('[data-theme-label]').textContent = isDark ? 'Light' : 'Dark';
       button.querySelector('[data-theme-icon]').textContent = isDark ? '☀️' : '🌙';
     });
   }
@@ -66,11 +67,16 @@
             </picture>
           </a>
           <nav class="nav-links" aria-label="Main navigation">${navHtml()}</nav>
-          <div class="header-actions">
-            <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode" title="Switch to dark mode" aria-pressed="false"><span data-theme-icon aria-hidden="true">🌙</span></button>
-            <a class="btn btn-primary btn-small header-cta" data-platform-link="book" href="${customerLink('book')}">Founders Discount</a>
+          <div class="header-tools">
+            <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode" title="Switch to dark mode" aria-pressed="false">
+              <span class="theme-toggle-label" data-theme-label>Dark</span>
+              <span class="theme-switch-track" aria-hidden="true"><span class="theme-switch-knob"><span data-theme-icon>🌙</span></span></span>
+            </button>
+            <div class="header-actions">
+              <a class="btn btn-primary btn-small header-cta" data-platform-link="book" href="${customerLink('book')}">Founders Discount</a>
+            </div>
+            <button class="mobile-toggle" type="button" data-mobile-toggle aria-expanded="false">Menu</button>
           </div>
-          <button class="mobile-toggle" type="button" data-mobile-toggle aria-expanded="false">Menu</button>
         </div>
       </header>`;
     applyTheme(document.documentElement.getAttribute('data-theme'));
@@ -94,7 +100,7 @@
                   <img src="assets/images/hbc-word-logo-transparent.png" alt="Hawaii Bin Cleaning">
                 </picture>
               </a>
-              <p>${cfg.tagline || ''} A local, family-owned service for cleaner, fresher bins.</p>
+              <p><strong>Bin day ends cleaner.</strong> Purpose-built curbside service from a local, family-owned Oʻahu company.</p>
             </div>
             <div>
               <div class="footer-title">Explore</div>
@@ -130,16 +136,27 @@
   if (header) {
     let lastScrollY = window.scrollY;
     let ticking = false;
+    let revealTimer;
     const topbarHeight = document.querySelector('.site-topbar')?.offsetHeight || 0;
 
     function updateHeader() {
       const currentScrollY = window.scrollY;
       const isOpen = header.classList.contains('is-open');
-      if (!isOpen && currentScrollY > topbarHeight + 80 && currentScrollY > lastScrollY + 6) {
+      const scrollingUp = currentScrollY < lastScrollY - 4;
+      const scrollingDown = currentScrollY > lastScrollY + 4;
+
+      window.clearTimeout(revealTimer);
+
+      if (!isOpen && currentScrollY > topbarHeight + 60 && scrollingUp) {
         header.classList.add('header-hidden');
-      } else if (currentScrollY < lastScrollY - 6 || currentScrollY <= topbarHeight + 40) {
+      } else if (scrollingDown || currentScrollY <= topbarHeight + 30 || isOpen) {
         header.classList.remove('header-hidden');
       }
+
+      revealTimer = window.setTimeout(() => {
+        header.classList.remove('header-hidden');
+      }, 220);
+
       lastScrollY = Math.max(currentScrollY, 0);
       ticking = false;
     }
@@ -286,7 +303,7 @@
           body: data
         });
         form.reset();
-        setFormStatus(form, 'Mahalo! Your request was submitted. Hawaii Bin Cleaning will follow up when founders discount routes open.', 'success');
+        setFormStatus(form, 'Mahalo—your neighborhood is on our radar. We’ll share an update when route timing, service details and Founding Member opportunities are ready.', 'success');
       } catch (error) {
         setFormStatus(form, 'Something went wrong while submitting. Please try again or contact Hawaii Bin Cleaning directly.', 'error');
       } finally {

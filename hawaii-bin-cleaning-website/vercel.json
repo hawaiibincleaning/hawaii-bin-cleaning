@@ -7,6 +7,7 @@
     { "source": "/thank-you", "destination": "/thank-you.html" },
     { "source": "/about", "destination": "/about.html" },
     { "source": "/services", "destination": "/services.html" },
+    { "source": "/our-truck", "destination": "/our-truck.html" },
     { "source": "/faq", "destination": "/faq.html" },
     { "source": "/terms", "destination": "/terms.html" },
     { "source": "/privacy", "destination": "/privacy.html" },
